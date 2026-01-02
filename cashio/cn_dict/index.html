@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="zh">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>fx-CN X/CN CW 词典</title>
+<link rel="stylesheet" href="../key-font/key_font.css?2">
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<meta name="color-scheme" content="light dark">
+<style>
+    html, body {
+        font-family: "Helvetica Neue", Arial, sans-serif;
+        margin: 0 auto;
+        padding: 0;
+        background-color: #f9f9fb;
+        color: #333;
+        scroll-behavior: smooth;
+    }
+
+    #app {
+        margin: 0 auto;
+        max-width: 1024px;
+    }
+
+    #back-to-top {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px 10px;
+        border-radius: 25px;
+        cursor: pointer;
+        width: 25px;
+        height: 25px;
+        text-align: center;
+        line-height: 25px;
+        user-select: none;
+    }
+
+    #back-to-top-icon::before {
+        content: "↑";
+    }
+
+    #back-to-top:hover {
+        background-color: #0056b3;
+    }
+
+    .loading {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem;
+        font-size: 1.2rem;
+        color: #999;
+    }
+
+    .CY {
+        font-family: 'ClassWiz X Display' !important;
+    }
+
+    .EY {
+        font-family: 'ClassWiz CW Display' !important;
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 2rem;
+        margin: 1.5rem 0;
+        color: #2c3e50;
+    }
+
+    #panel {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem;
+        background-color: #ffffff;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        border-radius: 8px;
+        margin: 1rem;
+    }
+
+    #panel input[type="radio"] {
+        margin: 0 0.5rem;
+        accent-color: #007bff;
+    }
+
+    #panel label {
+        margin-right: 1rem;
+        font-weight: bold;
+        color: #555;
+    }
+
+    .alphabet-index {
+        padding-top: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .alphabet-index a {
+        text-decoration: none;
+        color: #007bff;
+        font-weight: bold;
+        font-size: 1.1rem;
+        border: 1px solid #007bff;
+        padding: 4px 8px;
+        border-radius: 6px;
+        transition: all 0.2s ease;
+    }
+
+    .alphabet-index a:hover {
+        background-color: #007bff;
+        color: #fff;
+    }
+
+    .dict-alpha {
+        font-size: 1.5rem;
+        padding: 0.5rem 1rem;
+        text-align: center;
+        color: #2c3e50;
+        border-radius: 4px;
+        margin: 0.2rem 1rem;
+    }
+
+    .char-div {
+        display: flex;
+        align-items: center;
+        padding: 0.6rem 1rem;
+        margin: 0.2rem 1rem;
+        background-color: #fff;
+        border-bottom: 1px solid #e0e0e0;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+        border-radius: 6px;
+    }
+
+    .char-div:hover {
+        background-color: #f0f8ff;
+    }
+
+    .indicator {
+        font-size: 1.2rem;
+        color: #007bff;
+        margin-right: 10px;
+        transition: transform 0.2s ease;
+    }
+
+    .char {
+        font-size: 1.5rem;
+        color: #333;
+        margin-right: 10px;
+        font-weight: normal; /* 去掉加粗 */
+    }
+
+    .char-index {
+        font-size: 0.9rem;
+        color: #999;
+        margin-right: 10px;
+    }
+
+    .pinyin {
+        font-size: 1.1rem;
+        color: #666;
+    }
+
+    .word-index {
+        font-size: 0.9rem;
+        color: #aaa;
+        margin-left: 10px;
+    }
+
+    .word {
+        font-size: 1.3rem;
+        display: none;
+        margin: 0.5rem 2rem;
+        padding-left: 1rem;
+        border-left: 3px solid #007bff;
+    }
+
+    .word div {
+        margin: 0.3rem 0;
+        color: #444;
+    }
+
+    footer {
+        text-align: center;
+        padding: 20px;
+        margin-top: 40px;
+        font-size: 0.95rem;
+        background: #eaeaea;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        html, body {
+            background-color: #1e1e1e;
+            color: #ddd;
+        }
+
+        h1 {
+            color: #e0e0e0;
+        }
+
+        #panel {
+            background-color: #2a2a2a;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        #panel label {
+            color: #ccc;
+        }
+
+        .alphabet-index a {
+            color: #66b0ff;
+            border-color: #66b0ff;
+        }
+
+        .alphabet-index a:hover {
+            background-color: #66b0ff;
+            color: #000;
+        }
+
+        .dict-alpha {
+            color: #eee;
+        }
+
+        .char-div {
+            background-color: #2a2a2a;
+            border-bottom: 1px solid #444;
+        }
+
+        .char-div:hover {
+            background-color: #333;
+        }
+
+        .indicator {
+            color: #66b0ff;
+        }
+
+        .char {
+            color: #ddd;
+        }
+
+        .char-index {
+            color: #888;
+        }
+
+        .pinyin {
+            color: #aaa;
+        }
+
+        .word-index {
+            color: #888;
+        }
+
+        .word {
+            border-left-color: #66b0ff;
+        }
+
+        .word div {
+            color: #ccc;
+        }
+
+        .loading {
+            color: #888;
+        }
+
+        #back-to-top {
+            background-color: #66b0ff;
+            color: #000;
+        }
+
+        #back-to-top:hover {
+            background-color: #3388cc;
+        }
+
+
+        footer {
+            background: #2b2b2b;
+            color: #aaa;
+        }
+    }
+</style>
+<div id="back-to-top"><span id="back-to-top-icon"></span></div>
+<div id="app">
+    <h1 id="title">fx-CN X/CN CW 词典</h1>
+    <div id="loading" class="loading">
+        加载中...
+    </div>
+    <div id="panel" class="header" style="display: none">
+        <div>
+            <input type="radio" id="cy" name="dict-type" value="CY" checked>
+            <label for="cy">fx-CN X</label>
+            <input type="radio" id="ey" name="dict-type" value="EY">
+            <label for="ey">fx-CN CW</label>
+        </div>
+        <div id="alphabet-index"></div>
+    </div>
+    <div id="dictionary"></div>
+</div>
+<footer>
+    <a href="/">H.CA510.COM</a> &copy; All Rights Reserved
+</footer>
+
+<script>
+  let CY_DICT, EY_DICT;
+  const dictionaryEl = document.getElementById('dictionary');
+  const alphabetIndexEl = document.getElementById('alphabet-index');
+
+  fetch('./dict_dist.json')
+    .then(response => {
+      if (!response.ok) {
+        console.error('Network response was not ok', response);
+        alert('加载失败，请刷新页面重试')
+        location.reload();
+      }
+      return response.json();
+    })
+    .then(data => {
+      CY_DICT = data['CY'];
+      EY_DICT = data['EY'];
+      init();
+    })
+    .catch(error => {
+      console.error('There was a problem with the fetch operation:', error);
+      alert('加载失败，请刷新页面重试')
+      location.reload();
+    });
+
+  ['CY', 'EY'].forEach(modelType => {
+    const el = document.createElement('span');
+    el.classList.add(modelType);
+    el.innerHTML = '0';
+    document.body.appendChild(el);
+    window.getComputedStyle(el).getPropertyValue('font-family');
+    el.remove();
+  });
+
+  document.querySelectorAll('input[name="dict-type"]').forEach((elem) => {
+    elem.addEventListener('change', (event) => {
+      const dictType = event.target.value;
+      dictionaryEl.innerHTML = '';
+      alphabetIndexEl.innerHTML = '';
+      if (dictType === 'CY') {
+        drawDict(CY_DICT, "CY");
+      } else {
+        drawDict(EY_DICT, "EY");
+      }
+    });
+  });
+
+  const init = () => {
+    drawDict(CY_DICT, "CY");
+    document.getElementById('loading').style.display = 'none';
+    document.getElementById('panel').style.display = 'block';
+  }
+
+  const drawDict = (dict, modelClass) => {
+    let alpha = '';
+    dict.forEach(entry => {
+      if (entry.alphabet !== alpha) {
+        alpha = entry.alphabet;
+        const alphaDiv = document.createElement('div');
+        alphaDiv.className = 'dict-alpha';
+        alphaDiv.textContent = alpha.toUpperCase();
+        alphaDiv.id = alpha.toUpperCase();
+        dictionaryEl.appendChild(alphaDiv);
+
+        const alphaIndex = document.createElement('a');
+        alphaIndex.textContent = alpha.toUpperCase();
+        alphaIndex.href = `#${alpha.toUpperCase()}`;
+        alphabetIndexEl.classList.add('alphabet-index');
+        alphabetIndexEl.appendChild(alphaIndex);
+      }
+      const charDiv = document.createElement('div');
+      charDiv.className = 'char-div';
+      const indicatorEl = document.createElement('span');
+      indicatorEl.textContent = '▶';
+      indicatorEl.classList.add(modelClass, 'indicator');
+      charDiv.appendChild(indicatorEl);
+
+      const charEl = document.createElement('span');
+      charEl.textContent = entry.char;
+      charEl.classList.add(modelClass, 'char');
+      charDiv.addEventListener('click', () => toggleWords(charDiv.nextElementSibling) || toggleIndicator(charDiv.firstChild));
+      const charIndexEl = document.createElement('span');
+      charIndexEl.textContent = entry.index;
+      charIndexEl.classList.add(modelClass, 'char-index');
+      const pinyinEl = document.createElement('span');
+      pinyinEl.textContent = entry.pinyin;
+      pinyinEl.className = 'pinyin';
+      charDiv.appendChild(charEl);
+      charDiv.appendChild(charIndexEl);
+      charDiv.appendChild(pinyinEl);
+      dictionaryEl.appendChild(charDiv);
+
+      const wordContainer = document.createElement('div');
+      wordContainer.classList.add('word', modelClass);
+      entry.words.forEach(word => {
+        const wordDiv = document.createElement('div');
+        const wordEl = document.createElement('span');
+        wordEl.textContent = `${word.word}`;
+        const wordIndexEl = document.createElement('span');
+        wordIndexEl.textContent = word.index;
+        wordIndexEl.className = 'word-index';
+        wordDiv.appendChild(wordEl);
+        wordDiv.appendChild(wordIndexEl);
+        wordContainer.appendChild(wordDiv);
+      });
+      dictionaryEl.appendChild(wordContainer);
+    });
+
+    function toggleWords(element) {
+      if (element.style.display === 'block') {
+        element.style.display = 'none';
+      } else {
+        element.style.display = 'block';
+      }
+    }
+
+    function toggleIndicator(el) {
+      if (el.textContent === '▶') {
+        el.textContent = '▼';
+      } else {
+        el.textContent = '▶';
+      }
+    }
+  }
+  window.onscroll = function () {
+    scrollFunction()
+  };
+
+  function scrollFunction() {
+    if (document.body.scrollTop > 250 || document.documentElement.scrollTop > 250) {
+      document.getElementById("back-to-top").style.display = "block";
+    } else {
+      document.getElementById("back-to-top").style.display = "none";
+    }
+  }
+
+  document.getElementById("back-to-top").onclick = function () {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  };
+
+</script>
+</html>

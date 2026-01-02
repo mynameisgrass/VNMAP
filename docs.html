@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tài Liệu - GeoView</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Be Vietnam Pro', sans-serif;
+            background: #0F0C29;
+            background: -webkit-linear-gradient(to right, #24243E, #302B63, #0F0C29);
+            background: linear-gradient(to right, #24243E, #302B63, #0F0C29);
+        }
+        .glassmorphism {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body class="text-white min-h-screen flex flex-col">
+
+    <header class="glassmorphism sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold tracking-wider">
+                Geo<span class="text-purple-400">View</span>
+            </a>
+            <div class="space-x-8 text-base font-medium text-gray-300">
+                <a href="index.html" class="hover:text-purple-300 transition-colors duration-300">Trang Chủ</a>
+                <a href="about.html" class="hover:text-purple-300 transition-colors duration-300">Giới Thiệu</a>
+                <a href="docs.html" class="hover:text-purple-300 transition-colors duration-300">Tài Liệu</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="flex-grow container mx-auto px-6 py-16">
+        <div class="glassmorphism rounded-2xl p-8 md:p-12 max-w-4xl mx-auto">
+            <h1 class="text-4xl font-bold mb-8 bg-gradient-to-r from-purple-400 to-blue-400 text-transparent bg-clip-text">Tài Liệu Kỹ Thuật</h1>
+            <div class="text-lg leading-relaxed text-gray-300 space-y-6 prose prose-invert prose-lg max-w-none">
+                <h2 class="text-2xl font-bold text-purple-300">Giới thiệu</h2>
+                <p>GeoView là một ứng dụng web tĩnh được xây dựng để trực quan hóa dữ liệu hành chính của Việt Nam. Điểm khác biệt cốt lõi của dự án là không phụ thuộc vào bất kỳ thư viện bản đồ của bên thứ ba nào (như Google Maps hay Leaflet). Thay vào đó, GeoView render trực tiếp dữ liệu GeoJSON thành đồ họa vector có thể mở rộng (SVG), mang lại khả năng tùy biến vô hạn và hiệu suất cao.</p>
+
+                <h2 class="text-2xl font-bold text-purple-300">Công nghệ sử dụng</h2>
+                <ul>
+                    <li><strong>HTML5:</strong> Cấu trúc nền tảng của trang web.</li>
+                    <li><strong>Tailwind CSS:</strong> Framework CSS utility-first để xây dựng giao diện người dùng hiện đại, đẹp mắt và đáp ứng nhanh chóng.</li>
+                    <li><strong>JavaScript (ES6+):</strong> Ngôn ngữ lập trình chính để xử lý logic, từ việc tải và phân tích dữ liệu JSON, render SVG, đến việc tạo ra các tính năng tương tác như zoom, pan, tìm kiếm và hiển thị thông tin.</li>
+                    <li><strong>SVG (Scalable Vector Graphics):</strong> Công nghệ cốt lõi để vẽ bản đồ. Mỗi đơn vị hành chính được biểu diễn bằng một thẻ <code>&lt;path&gt;</code> trong SVG, cho phép đồ họa sắc nét ở mọi độ phân giải.</li>
+                </ul>
+
+                <h2 class="text-2xl font-bold text-purple-300">Luồng hoạt động</h2>
+                <ol>
+                    <li><strong>Chọn Tỉnh:</strong> Tại trang chủ, người dùng tìm kiếm và chọn một tỉnh từ danh sách được tải từ file <code>tinh.json</code>.</li>
+                    <li><strong>Tải Dữ Liệu:</strong> Khi chuyển đến trang bản đồ, ứng dụng sẽ thực hiện hai yêu cầu fetch song song: một để lấy file GeoJSON của tỉnh đã chọn và một để lấy file <code>xa.json</code> chứa thông tin chi tiết.</li>
+                    <li><strong>Tính toán và Render:</strong>
+                        <ul>
+                            <li>JavaScript tính toán "khung chứa" (bounding box) của toàn bộ tỉnh để xác định tỷ lệ và vị trí hiển thị.</li>
+                            <li>Một phép chiếu tuyến tính đơn giản được áp dụng để chuyển đổi tọa độ kinh độ/vĩ độ thành tọa độ x/y trên màn hình.</li>
+                            <li>Mỗi xã trong file GeoJSON được vẽ thành một thẻ <code>&lt;path&gt;</code> SVG và gán các sự kiện tương tác (click, hover).</li>
+                        </ul>
+                    </li>
+                    <li><strong>Tương tác:</strong> Người dùng có thể phóng to/thu nhỏ bằng các nút điều khiển, di chuột để xem tên xã, và nhấp vào một xã để phóng to vào khu vực đó và xem thông tin chi tiết được lấy từ <code>xa.json</code>.</li>
+                </ol>
+
+                <h2 class="text-2xl font-bold text-purple-300">Nguồn dữ liệu</h2>
+                <p>Dữ liệu được cung cấp bao gồm 34 file GeoJSON tương ứng với 34 tỉnh/thành phố, cùng với hai file <code>tinh.json</code> và <code>xa.json</code> để cung cấp thông tin định danh và chi tiết.</p>
+                <p><em>Lưu ý: Độ chính xác của dữ liệu địa lý phụ thuộc hoàn toàn vào các file GeoJSON được cung cấp.</em></p>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

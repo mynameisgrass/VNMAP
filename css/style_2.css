@@ -1,0 +1,17 @@
+.goog-te-banner-frame.skiptranslate { display: none !important; } 
+        body { top: 0px !important; }
+        .goog-tooltip { display: none !important; }
+        .goog-text-highlight { background-color: transparent !important; box-shadow: none !important; }
+        
+        #google_translate_element { display: inline-block; }
+        .goog-te-gadget-simple {
+            background-color: white !important;
+            border: 1px solid #e9d5ff !important;
+            padding: 6px 12px !important;
+            border-radius: 9999px !important;
+            font-family: 'Be Vietnam Pro', sans-serif !important;
+        }
+        .goog-te-gadget-simple a {
+            color: #7e22ce !important; font-weight: 600 !important; text-decoration: none !important;
+        }
+        .goog-te-gadget-simple img { display: none !important; }

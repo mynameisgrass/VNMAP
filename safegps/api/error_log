@@ -1,0 +1,18 @@
+[21-Sep-2025 12:10:28 UTC] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'your_db_user'@'localhost' (using password: YES) in /home/uodybfyn/public_html/safegps/api/db_config.php on line 16
+[21-Sep-2025 12:10:28 UTC] Database connection failed: Access denied for user 'your_db_user'@'localhost' (using password: YES)
+[21-Sep-2025 12:10:42 UTC] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'your_db_user'@'localhost' (using password: YES) in /home/uodybfyn/public_html/safegps/api/db_config.php on line 16
+[21-Sep-2025 12:10:42 UTC] Database connection failed: Access denied for user 'your_db_user'@'localhost' (using password: YES)
+[21-Sep-2025 12:10:45 UTC] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'your_db_user'@'localhost' (using password: YES) in /home/uodybfyn/public_html/safegps/api/db_config.php on line 16
+[21-Sep-2025 12:10:45 UTC] Database connection failed: Access denied for user 'your_db_user'@'localhost' (using password: YES)
+[21-Sep-2025 12:10:45 UTC] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'your_db_user'@'localhost' (using password: YES) in /home/uodybfyn/public_html/safegps/api/db_config.php on line 16
+[21-Sep-2025 12:10:45 UTC] Database connection failed: Access denied for user 'your_db_user'@'localhost' (using password: YES)
+[21-Sep-2025 12:10:48 UTC] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'your_db_user'@'localhost' (using password: YES) in /home/uodybfyn/public_html/safegps/api/db_config.php on line 16
+[21-Sep-2025 12:10:48 UTC] Database connection failed: Access denied for user 'your_db_user'@'localhost' (using password: YES)
+[21-Sep-2025 12:11:02 UTC] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'your_db_user'@'localhost' (using password: YES) in /home/uodybfyn/public_html/safegps/api/db_config.php on line 16
+[21-Sep-2025 12:11:02 UTC] Database connection failed: Access denied for user 'your_db_user'@'localhost' (using password: YES)
+[21-Sep-2025 12:11:23 UTC] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'your_db_user'@'localhost' (using password: YES) in /home/uodybfyn/public_html/safegps/api/db_config.php on line 16
+[21-Sep-2025 12:11:23 UTC] Database connection failed: Access denied for user 'your_db_user'@'localhost' (using password: YES)
+[21-Sep-2025 12:45:46 UTC] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'your_db_user'@'localhost' (using password: YES) in /home/uodybfyn/public_html/safegps/api/db_config.php on line 16
+[21-Sep-2025 12:45:46 UTC] Database connection failed: Access denied for user 'your_db_user'@'localhost' (using password: YES)
+[21-Sep-2025 12:45:53 UTC] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'your_db_user'@'localhost' (using password: YES) in /home/uodybfyn/public_html/safegps/api/db_config.php on line 16
+[21-Sep-2025 12:45:53 UTC] Database connection failed: Access denied for user 'your_db_user'@'localhost' (using password: YES)

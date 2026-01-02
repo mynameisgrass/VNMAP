@@ -1,0 +1,11 @@
+RewriteEngine On
+
+# Redirect HTTP to HTTPS (khuyến khích)
+# RewriteCond %{HTTPS} off
+# RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Nếu yêu cầu không phải là file hoặc thư mục, chuyển đến login.html
+RewriteCond %{REQUEST_URI} !/api/ [NC]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.html [QSA,L]

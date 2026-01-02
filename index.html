@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>VNMAP - Bản đồ Hành chính Việt Nam</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700;800&display=swap" rel="stylesheet">
+    
+    <!-- LEAFLET MAP -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <!-- CORE STYLES -->
+    <style>
+        html, body { height: 100%; margin: 0; padding: 0; overflow: hidden; }
+        body {
+            font-family: 'Be Vietnam Pro', sans-serif;
+            background: #0F0C29;
+            background: linear-gradient(to right, #24243E, #302B63, #0F0C29);
+            height: 100dvh; 
+        }
+        .glassmorphism {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .scroll-box { overflow-y: auto; -webkit-overflow-scrolling: touch; }
+        .scroll-box::-webkit-scrollbar { width: 4px; }
+        .scroll-box::-webkit-scrollbar-track { background: transparent; }
+        .scroll-box::-webkit-scrollbar-thumb { background-color: #a855f7; border-radius: 20px; }
+        
+        #map { width: 100%; height: 100%; background-color: #1a1a2e; z-index: 1; }
+
+        .leaflet-container .leaflet-control-mouseposition {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 3px 8px; color: #333; font-size: 11px; font-weight: bold; border-radius: 4px;
+            display: none;
+        }
+        @media (min-width: 768px) {
+            .leaflet-container .leaflet-control-mouseposition { display: block; }
+        }
+    </style>
+
+    <!-- --- GOOGLE TRANSLATE KILLER (NUCLEAR VERSION) --- -->
+    <style>
+        /* 1. HIDE THE TOP BAR */
+        .goog-te-banner-frame, iframe.goog-te-banner-frame { display: none !important; }
+        body { top: 0px !important; position: static !important; }
+
+        /* 2. HIDE THE HOVER POPUP (The "Original Text" Bubble) */
+        #goog-gt-tt, .goog-te-balloon-frame {
+            display: none !important;
+            visibility: hidden !important;
+            opacity: 0 !important;
+            pointer-events: none !important;
+        }
+
+        /* 3. DISABLE MOUSE INTERACTION ON TRANSLATED TEXT 
+           This prevents the hover event from ever firing. 
+           (Clicks still pass through to buttons/links behind it) */
+        .goog-text-highlight {
+            background-color: transparent !important;
+            box-shadow: none !important;
+            pointer-events: none !important; /* <--- THE KEY FIX */
+        }
+
+        /* 4. STYLE THE BUTTON */
+        #google_translate_element { display: inline-block; }
+        .goog-te-gadget-simple {
+            background-color: rgba(255, 255, 255, 0.1) !important;
+            border: 1px solid rgba(168, 85, 247, 0.5) !important;
+            padding: 6px 12px !important;
+            border-radius: 20px !important;
+            cursor: pointer;
+        }
+        .goog-te-gadget-simple:hover { background-color: rgba(168, 85, 247, 0.3) !important; }
+        .goog-te-gadget-simple a {
+            color: #d8b4fe !important;
+            font-weight: 600 !important;
+            text-decoration: none !important;
+        }
+        .goog-te-gadget-simple img { display: none !important; }
+        .goog-te-gadget-simple span { border-left: none !important; }
+    </style>
+</head>
+
+<body class="text-white flex flex-col">
+
+    <!-- HEADER -->
+    <header class="glassmorphism sticky top-0 z-50 flex-shrink-0 border-b border-white/10">
+        <nav class="container mx-auto px-4 py-3 flex justify-between items-center">
+            
+            <div class="flex items-center gap-3">
+                <a href="index.html" class="text-xl md:text-2xl font-bold tracking-wider whitespace-nowrap">
+                    VN<span class="text-purple-400">MAP</span>
+                </a>
+                <img src="./data/Logo MAP Page fn.png" alt="Logo" class="h-8 lg:hidden block">
+            </div>
+            
+            <div class="hidden lg:block absolute left-1/2 transform -translate-x-1/2">
+                <a href="index.html" class="hover:opacity-80 transition-opacity">
+                    <img src="./data/Logo MAP Page fn.png" alt="Center Logo" class="h-10">
+                </a>
+            </div>
+
+            <div class="flex items-center gap-3 md:gap-6 text-sm font-medium text-gray-300">
+                <a href="index.html" class="hidden md:block hover:text-purple-300 transition-colors">Trang Chủ</a>
+                <a href="about.html" class="hidden md:block hover:text-purple-300 transition-colors">Giới Thiệu</a>
+                <div id="google_translate_element"></div>
+            </div>
+            
+        </nav>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-grow flex flex-col lg:flex-row lg:overflow-hidden relative">
+        
+        <!-- MAP -->
+        <div class="relative w-full h-[40dvh] lg:h-full lg:w-1/2 flex-shrink-0 z-0">
+            <div id="map" class="w-full h-full lg:rounded-r-none"></div>
+            <div class="absolute bottom-0 left-0 w-full h-6 bg-gradient-to-t from-[#0F0C29] to-transparent pointer-events-none lg:hidden z-10"></div>
+        </div>
+
+        <!-- LIST -->
+        <div class="flex-1 w-full lg:w-1/2 flex flex-col overflow-hidden bg-[#0F0C29]/50 lg:bg-transparent relative z-10 -mt-4 lg:mt-0 rounded-t-3xl lg:rounded-none shadow-[0_-5px_20px_rgba(0,0,0,0.5)] lg:shadow-none border-t border-white/10 lg:border-none">
+            <div class="glassmorphism w-full h-full flex flex-col p-5 md:p-10 lg:border-l lg:border-white/10">
+                
+                <div class="w-12 h-1 bg-white/20 rounded-full mx-auto mb-4 lg:hidden"></div>
+
+                <div class="flex-shrink-0 text-center mb-4">
+                    <h1 class="text-xl md:text-3xl lg:text-4xl font-extrabold bg-gradient-to-r from-purple-400 to-blue-400 text-transparent bg-clip-text">
+                        Phần mềm bản đồ hành chính mới và du lịch Việt Nam
+                    </h1>
+                    <p class="text-xs md:text-base text-gray-400 mt-2">Chọn tỉnh thành để xem chi tiết</p>
+                </div>
+
+                <div class="flex-grow scroll-box pr-1">
+                    <div id="province-buttons" class="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-3 pb-8">
+                        <div class="col-span-full flex justify-center py-10">
+                            <svg class="animate-spin h-8 w-8 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex-shrink-0 text-center pt-4 border-t border-white/5 mt-2">
+                    <p class="text-[10px] md:text-xs text-gray-500 font-mono">&copy; 2025 VNMAP. All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- SCRIPTS -->
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const buttonContainer = document.getElementById('province-buttons');
+            const API_URL = 'https://vnmap-safeschool.net/api.php';
+            try {
+                const tinhRes = await fetch(`${API_URL}?action=get_all_provinces`);
+                if (!tinhRes.ok) throw new Error("API Error");
+                const tinhData = await tinhRes.json();
+                buttonContainer.innerHTML = '';
+                tinhData['Province List'].forEach(province => {
+                    const button = document.createElement('a');
+                    const id = province['id'];
+                    const rawName = province['Tong_quan_tinh_thanh_pho']; 
+                    const displayName = rawName ? rawName.split(' (Mã tỉnh:')[0] : 'Không có tên';
+                    button.href = `map.html?id=${id}`;
+                    button.target = '_blank';
+                    // Added "notranslate" class to province names if you want to prevent them from being translated at all
+                    button.className = `relative overflow-hidden group p-3 text-center text-xs md:text-sm font-semibold rounded-xl border border-white/5 bg-white/5 hover:bg-purple-600/80 hover:border-purple-400 transition-all duration-300 flex items-center justify-center shadow-sm hover:shadow-lg hover:shadow-purple-500/20 active:scale-95`;
+                    button.innerHTML = `<span class="relative z-10 text-gray-200 group-hover:text-white">${displayName}</span>`;
+                    buttonContainer.appendChild(button);
+                });
+            } catch (error) {
+                buttonContainer.innerHTML = '<div class="col-span-full text-center p-4 text-red-400 text-sm">Lỗi kết nối máy chủ.</div>';
+            }
+        });
+    </script>
+
+    <script>
+        var map = L.map('map', { attributionControl: false, zoomControl: false });
+        L.control.zoom({ position: 'bottomright' }).addTo(map);
+        var imageBounds = [ [8.1, 102.0], [23.5, 118.0] ];
+        var imageUrl = './data/BĐHCVN.jpg';
+        L.imageOverlay(imageUrl, imageBounds).addTo(map);
+        window.innerWidth < 768 ? map.setView([15.5, 106.0], 5) : map.setView([16.0, 108.0], 6);
+        map.setMinZoom(5);
+        map.setMaxBounds(imageBounds);
+        L.control.scale({maxWidth: 150, metric: true, imperial: false, position: 'bottomleft'}).addTo(map);
+
+        L.Control.MousePosition = L.Control.extend({
+            options: { position: "bottomleft", prefix: "Toạ độ: " },
+            onAdd: function(map) {
+                this._container = L.DomUtil.create("div", "leaflet-control-mouseposition glassmorphism");
+                this._container.style.marginBottom = "25px"; this._container.style.marginLeft = "10px";
+                map.on("mousemove", this._onMouseMove, this);
+                return this._container;
+            },
+            onRemove: function(map) { map.off("mousemove", this._onMouseMove); },
+            _onMouseMove: function(e) { this._container.innerHTML = this.options.prefix + e.latlng.lat.toFixed(4) + ", " + e.latlng.lng.toFixed(4); }
+        });
+        map.addControl(new L.Control.MousePosition());
+    </script>
+    
+    <!-- GOOGLE TRANSLATE CLEANUP SCRIPT -->
+    <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'vi', 
+        includedLanguages: 'en,vi',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+        autoDisplay: false
+      }, 'google_translate_element');
+    }
+
+    // --- THE CLEANUP SCRIPT ---
+    // This watcher constantly looks for the tooltip element and destroys it
+    const observer = new MutationObserver((mutations) => {
+        const tooltips = document.querySelectorAll('#goog-gt-tt, .goog-te-balloon-frame');
+        tooltips.forEach(tt => {
+            tt.remove(); // Forces the popup to be removed from HTML
+        });
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>

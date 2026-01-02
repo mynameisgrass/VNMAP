@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bản đồ Chi tiết & TTS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- MAP & UI STYLES -->
+    
+
+    <!-- GOOGLE TRANSLATE STYLES -->
+    
+
+<link rel="stylesheet" href="css/style_1.css">
+<link rel="stylesheet" href="css/style_2.css">
+</head>
+<body class="w-screen h-screen flex flex-col text-gray-800">
+
+    <!-- HEADER -->
+    <header class="bg-white shadow-sm z-30 flex-shrink-0 relative">
+        <nav class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <h1 id="province-title" class="text-lg lg:text-2xl font-bold text-gray-800 truncate flex items-center gap-2">
+                <span class="w-2 h-6 bg-purple-600 rounded-full inline-block"></span>
+                <span id="title-text">Đang tải dữ liệu...</span>
+            </h1>
+            
+            <div class="flex items-center gap-4">
+                <a href="index.html" class="text-gray-600 hover:text-purple-700 font-semibold text-sm transition">Trang chủ</a>
+                <div id="google_translate_element"></div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <div class="flex-grow flex flex-col lg:flex-row relative overflow-hidden">
+        
+        <!-- MAP AREA -->
+        <main id="map-area" class="flex-grow h-[55%] lg:h-full w-full relative bg-slate-100">
+            <div id="map-container" class="w-full h-full"></div>
+            
+            <!-- Minimap Preview (Top Left) -->
+            <div id="minimap-overlay" class="absolute top-4 left-4 z-10 bg-white rounded-lg shadow-xl border-2 border-purple-300 overflow-hidden opacity-0 transition-all duration-300 cursor-pointer hover:border-purple-500 hover:shadow-2xl" style="width: 240px; height: 160px;">
+                <img id="minimap-image" src="" alt="Province Map Preview" class="w-full h-full object-cover transition-transform duration-200 hover:scale-105">
+                <div class="absolute top-1 left-1 bg-black/70 text-white text-xs px-2 py-1 rounded backdrop-blur-sm font-semibold">Bản đồ tổng quan</div>
+                <div class="absolute bottom-1 right-1 bg-purple-600/90 text-white text-[10px] px-2 py-0.5 rounded backdrop-blur-sm font-medium">Click để zoom out</div>
+            </div>
+            
+            <!-- Loading Spinner -->
+            <div id="loader" class="absolute inset-0 bg-white/50 backdrop-blur-sm flex items-center justify-center z-20">
+                <div class="flex flex-col items-center gap-3">
+                    <div class="animate-spin rounded-full h-12 w-12 border-4 border-purple-200 border-t-purple-600"></div>
+                    <span class="text-purple-700 font-medium animate-pulse">Đang tải bản đồ...</span>
+                </div>
+            </div>
+
+            <!-- Zoom Controls -->
+            <div class="absolute bottom-6 right-6 z-10 flex flex-col space-y-2">
+                <button id="zoom-in" class="w-10 h-10 rounded-full bg-white shadow-lg text-2xl font-bold text-purple-700 hover:bg-purple-50 transition flex items-center justify-center border border-purple-100">+</button>
+                <button id="zoom-out" class="w-10 h-10 rounded-full bg-white shadow-lg text-2xl font-bold text-purple-700 hover:bg-purple-50 transition flex items-center justify-center border border-purple-100">−</button>
+            </div>
+        </main>
+        
+        <!-- SIDEBAR INFO -->
+        <aside class="w-full h-[45%] lg:w-[480px] lg:h-full flex flex-col z-20 bg-white shadow-2xl flex-shrink-0 border-l border-gray-100">
+            
+            <!-- SCROLLABLE CONTENT -->
+            <div class="overflow-y-auto flex-grow p-4 space-y-4 custom-scrollbar">
+                
+                <!-- SECTION 1: PROVINCE INFO -->
+                <div class="bg-white rounded-xl border border-purple-100 p-4 shadow-sm relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-purple-50 rounded-bl-full -z-0 opacity-50"></div>
+                    
+                    <div class="flex justify-between items-center mb-3 relative z-10">
+                        <h2 class="text-lg font-bold text-gray-800 flex items-center gap-2">
+                            <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+                            Tổng quan Tỉnh
+                        </h2>
+                        <!-- TTS Button Province -->
+                        <button id="speak-province-btn" class="speak-btn" title="Đọc thông tin tỉnh">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </button>
+                    </div>
+
+                    <!-- Hidden Audio Player -->
+                    <audio id="global-player" class="hidden"></audio>
+
+                    <!-- Stats -->
+                    <div id="province-stats" class="text-sm text-gray-600 mb-4 pb-3 border-b border-dashed border-gray-200"></div>
+                    
+                    <!-- Images -->
+                    <div id="province-image-gallery" class="grid grid-cols-3 gap-2 mb-4 h-24">
+                         <div class="bg-gray-100 rounded-lg animate-pulse col-span-3 h-full"></div>
+                    </div>
+
+                    <!-- Details Text (Scraped by TTS) -->
+                    <div id="province-details-content" class="space-y-3 text-sm text-gray-700">
+                        <!-- Loaded dynamically -->
+                    </div>
+                </div>
+
+                <!-- SECTION 2: COMMUNE SEARCH -->
+                <div class="relative z-20">
+                    <div class="relative">
+                        <input type="text" id="commune-search" placeholder="Tìm kiếm xã/phường..." 
+                            class="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:bg-white focus:border-purple-500 focus:ring-2 focus:ring-purple-200 outline-none transition shadow-sm">
+                        <svg class="w-5 h-5 absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                    </div>
+                    <div id="search-results" class="absolute top-full left-0 right-0 mt-1 bg-white border border-purple-100 rounded-xl shadow-xl z-50 hidden"></div>
+                </div>
+
+                <!-- SECTION 3: COMMUNE DETAILS -->
+                <div id="commune-panel" class="bg-purple-50 rounded-xl border border-purple-100 p-4 shadow-sm transition-all duration-300 opacity-50 grayscale pointer-events-none">
+                    <div class="flex justify-between items-center mb-3">
+                        <h2 id="commune-name" class="text-lg font-bold text-purple-900">Chi tiết Xã/Phường</h2>
+                        <!-- TTS Button Commune -->
+                        <button id="speak-commune-btn" class="speak-btn bg-white" title="Đọc thông tin xã">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </button>
+                    </div>
+                    
+                    <div id="commune-details" class="space-y-3 text-sm text-gray-700">
+                        <p class="text-gray-500 italic">Chọn một xã trên bản đồ để xem chi tiết.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="p-3 bg-gray-50 border-t border-gray-200 text-center text-xs text-gray-400">
+                Dữ liệu bản đồ © SafeSchool Vietnam
+            </div>
+        </aside>
+    </div>
+
+    <!-- TOOLTIP ELEMENT -->
+    <div id="tooltip"></div>
+
+    
+
+    <!-- GOOGLE TRANSLATE -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'vi', includedLanguages: 'en,vi,ja,fr,ko,zh-CN',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+<!-- Map Modules -->
+<script src="js/mapUtils.js"></script>
+<script src="js/mapMinimap.js"></script>
+<script src="js/script_1.js"></script>
+</body>
+</html>

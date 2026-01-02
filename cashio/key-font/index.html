@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<meta name="color-scheme" content="light dark">
+<title>Key Font Table | 按键字体一览</title>
+<link rel="stylesheet" href="./key_font.css">
+<link rel="stylesheet" href="../1-level-font/table.css">
+<style>
+    html, body {
+        height: 100%;
+        padding: 0;
+        margin: 0;
+    }
+
+    #app {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        padding: 0 10px;
+    }
+
+    #default {
+        flex: 1;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 5px;
+    }
+
+    .table-view tr th, .table-view tr td {
+        text-align: center;
+    }
+
+    .table-view {
+        min-width: unset;
+    }
+
+    #table-view {
+        max-height: 90vh;
+        display: flex;
+        flex: 1;
+    }
+</style>
+<h1><span>Key Font Table</span><span>按键字体一览</span></h1>
+<div id="app">
+    <div id="panel-view"></div>
+    <div id="table-view" style="display: none"></div>
+    <div id="default">Select fonts to display and compare<br>选择要显示和比较的字体</div>
+    <footer>
+        <a href="/">H.CA510.COM</a> &copy; All Rights Reserved
+    </footer>
+</div>
+<script>
+  const panel = document.getElementById('panel-view');
+  const tableView = document.getElementById('table-view');
+  const defaultEl = document.getElementById('default');
+
+  const fonts = [
+    [
+      ["cw01", "CASIO ClassWiz CW01"],
+      ["cw02", "CASIO ClassWiz CW02"],
+    ],
+    [
+      ["cwex", "CASIO ClassWiz"],
+      ["cwde", "CASIO ClassWiz DE"],
+      ["cwfr", "CASIO ClassWiz Fr"],
+      ["cwce", "CASIO ClassWiz CE"],
+      ["cwrs", "CASIO ClassWiz RS"],
+    ],
+    [
+      ["es01", "ES01"],
+      ["es02", "ES02"],
+      ["es03", "ES03"],
+      ["es04", "ES04"],
+    ],
+    [
+      ["cwfx01", "CWFX01"],
+      /*],
+      [*/
+      ["cfx01", "CFX01"],
+      ["cfx02", "CFX02"],
+      ["cfx03", "CFX03"],
+      ["cfx04", "CFX04"],
+      ["cfx05", "CFX05"],
+      ["cfx06", "CFX06"],
+    ],
+    [
+      ["fc01", "FC01"],
+      ["ms01", "CASIO MS01"],
+      ["soii", "CASIO fx-82 SOLAR II"],
+    ],
+  ];
+
+  // preload fonts
+  const fontsPreload = async () => fonts.map(font => font.map(f => {
+    const el = document.createElement('span');
+    el.classList.add(f[0]);
+    el.innerHTML = '0';
+    document.body.appendChild(el);
+    window.getComputedStyle(el).getPropertyValue('font-family');
+    el.remove();
+  }));
+
+  const ascii = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "!", "$", "\"", "'", "%", "&", "(", ")", "*", "+", ".", ",", "-", "/", "=", "^", "~", "#", "{", "<", ">", "?", "@", "[", "}", "]", ":", ";", "_", "`", "|", "\\"];
+
+  const init = async () => {
+    panel.innerHTML = fonts.map(font => `<div class="panel">${font.map(f => `<div class="form-group"><input type="checkbox" id="input-${f[0]}" name="${f[0]}" value="${f[0]}" data-font-name="${f[1]}"><label for="input-${f[0]}">${f[1]}</label></div>`).join('')}</div>`).join('');
+    panel.querySelectorAll('input').forEach(input => {
+      input.onchange = () => {
+        createTable();
+      }
+    });
+  };
+
+  const createTable = () => {
+    const view = [];
+    panel.querySelectorAll('input').forEach(input => {
+      if (input.checked) {
+        view.push([input.value, input.dataset.fontName]);
+      }
+    });
+    if (view.length === 0) {
+      defaultEl.style.display = '';
+      tableView.style.display = 'none';
+      tableView.innerHTML = '';
+      return;
+    }
+    defaultEl.style.display = 'none';
+    tableView.style.display = '';
+    tableView.innerHTML = `<div class="table-container"><table class="table-view"><thead>
+<tr>
+<th>ASCII</th>
+${view.map(v => `<th>${v[1].replace('CASIO ', '').replace('ClassWiz ', 'ClassWiz<br>')}</th>`).join('')}
+</tr></thead>
+<tbody>
+${ascii.map(a => `<tr><td>${a}</td>${view.map(v => `<td class="${v[0]}">${a}</td>`).join('')}</tr>`).join('')}
+</tbody>
+</div>`;
+  };
+
+  init().then(() => fontsPreload());
+</script>
+</html>

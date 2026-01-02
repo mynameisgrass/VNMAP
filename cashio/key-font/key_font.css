@@ -1,0 +1,257 @@
+@font-face {
+    font-family: "CASIO ClassWiz CW01";
+    src: url("https://ik.imagekit.io/fonts/Calc/CASIOClassWizCW01.woff2") format("woff2"),
+    url("https://ik.imagekit.io/fonts/Calc/CASIOClassWizCW01.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "CASIO ClassWiz CW02";
+    src: url("https://ik.imagekit.io/fonts/Calc/CASIOClassWizCW02.woff2") format("woff2"),
+    url("https://ik.imagekit.io/fonts/Calc/CASIOClassWizCW02.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "CASIO ClassWiz";
+    src: url("https://ik.imagekit.io/fonts/Calc/CASIOClassWiz.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "CASIO ClassWiz CE";
+    src: url("https://ik.imagekit.io/fonts/Calc/CASIOClassWizCE.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "CASIO ClassWiz DE";
+    src: url("https://ik.imagekit.io/fonts/Calc/CASIOClassWizDE.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "CASIO ClassWiz Fr";
+    src: url("https://ik.imagekit.io/fonts/Calc/CASIOClassWizFr.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "CASIO ClassWiz RS";
+    src: url("https://ik.imagekit.io/fonts/Calc/CASIOClassWizRS.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "ES01";
+    src: url("https://ik.imagekit.io/fonts/Calc/ES01.TTF") format("truetype");
+}
+
+@font-face {
+    font-family: "ES02";
+    src: url("https://ik.imagekit.io/fonts/Calc/ES02.TTF") format("truetype");
+}
+
+@font-face {
+    font-family: "ES03";
+    src: url("https://ik.imagekit.io/fonts/Calc/ES03.woff2") format("woff2"),
+    url("https://ik.imagekit.io/fonts/Calc/ES03.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "ES04";
+    src: url("https://ik.imagekit.io/fonts/Calc/ES04.woff2") format("woff2"),
+    url("https://ik.imagekit.io/fonts/Calc/ES04.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "CASIO fx-82 SOLAR II";
+    src: url("https://ik.imagekit.io/fonts/Calc/CASIOfx-82SOLARII.woff2") format("woff2"),
+    url("https://ik.imagekit.io/fonts/Calc/CASIOfx-82SOLARII.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "FC01";
+    src: url("https://ik.imagekit.io/fonts/Calc/FC01.TTF") format("truetype");
+}
+
+@font-face {
+    font-family: "CASIO MS01";
+    src: url("https://ik.imagekit.io/fonts/Calc/CASIO%20MS01.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "CFX01";
+    src: url("https://ik.imagekit.io/fonts/Calc/CFX01.TTF") format("truetype");
+}
+
+@font-face {
+    font-family: "CFX02";
+    src: url("https://ik.imagekit.io/fonts/Calc/CFX02.TTF") format("truetype");
+}
+
+@font-face {
+    font-family: "CFX03";
+    src: url("https://ik.imagekit.io/fonts/Calc/CFX03.TTF") format("truetype");
+}
+
+@font-face {
+    font-family: "CFX04";
+    src: url("https://ik.imagekit.io/fonts/Calc/CFX04.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "CFX05";
+    src: url("https://ik.imagekit.io/fonts/Calc/CFX05.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "CFX06";
+    src: url("https://ik.imagekit.io/fonts/Calc/CFX06.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "CWFX01";
+    src: url("https://ik.imagekit.io/fonts/Calc/CWFX01.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: 'ClassWiz CW Display';
+    src: url('https://ik.imagekit.io/fonts/Calc/ClassWizCWDisplay-Regular.woff2?v=3.006') format('woff2'),
+    url('https://ik.imagekit.io/fonts/Calc/ClassWizCWDisplay-Regular.ttf?v=3.006') format('truetype');
+}
+
+@font-face {
+    font-family: 'ClassWiz X Display';
+    src: url('https://ik.imagekit.io/fonts/Calc/ClassWizXDisplay-Regular.woff2') format('woff2'),
+    url('https://ik.imagekit.io/fonts/Calc/ClassWizXDisplay-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'CASIO-ESP-Display-Normal-Font';
+    src: url('https://ik.imagekit.io/fonts/Calc/CASIO-ESP-Display-Normal-Font.woff') format('woff'),
+    url('https://ik.imagekit.io/fonts/Calc/CASIO-ESP-Display-Normal-Font.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'CASIO-ESP-Display-Small-Font';
+    src: url('https://ik.imagekit.io/fonts/Calc/CASIO-ESP-Display-Small-Font.woff') format('woff'),
+    url('https://ik.imagekit.io/fonts/Calc/CASIO-ESP-Display-Small-Font.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'CASIO-ES-Display-Normal-Font';
+    src: url('https://ik.imagekit.io/fonts/Calc/CASIO-ES-Display-Normal-Font.woff') format('woff'),
+    url('https://ik.imagekit.io/fonts/Calc/CASIO-ES-Display-Normal-Font.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'CASIO-ES-Display-Small-Font';
+    src: url('https://ik.imagekit.io/fonts/Calc/CASIO-ES-Display-Small-Font.woff') format('woff'),
+    url('https://ik.imagekit.io/fonts/Calc/CASIO-ES-Display-Small-Font.ttf') format('truetype');
+}
+
+.wordbreak {
+    word-break: break-all;
+}
+
+.cwex {
+    font-family: "CASIO ClassWiz" !important;
+}
+
+.cwce {
+    font-family: "CASIO ClassWiz CE" !important;
+}
+
+.cwde {
+    font-family: "CASIO ClassWiz DE" !important;
+}
+
+.cwfr {
+    font-family: "CASIO ClassWiz Fr" !important;
+}
+
+.cwrs {
+    font-family: "CASIO ClassWiz RS" !important;
+}
+
+.cw01 {
+    font-family: "CASIO ClassWiz CW01" !important;
+}
+
+.cw02 {
+    font-family: "CASIO ClassWiz CW02" !important;
+}
+
+.es01 {
+    font-family: "ES01" !important;
+}
+
+.es02 {
+    font-family: "ES02" !important;
+}
+
+.es03 {
+    font-family: "ES03" !important;
+}
+
+.es04 {
+    font-family: "ES04" !important;
+}
+
+.fc01 {
+    font-family: "FC01" !important;
+}
+
+.ms01 {
+    font-family: "CASIO MS01" !important;
+}
+
+.soii {
+    font-family: "CASIO fx-82 SOLAR II" !important;
+}
+
+.cfx01 {
+    font-family: "CFX01" !important;
+}
+
+.cfx02 {
+    font-family: "CFX02" !important;
+}
+
+.cfx03 {
+    font-family: "CFX03" !important;
+}
+
+.cfx04 {
+    font-family: "CFX04" !important;
+}
+
+.cfx05 {
+    font-family: "CFX05" !important;
+}
+
+.cfx06 {
+    font-family: "CFX06" !important;
+}
+
+.cwfx01 {
+    font-family: "CWFX01" !important;
+}
+
+.cwdisp {
+    font-family: "ClassWiz CW Display" !important;
+}
+
+.exdisp {
+    font-family: "ClassWiz X Display" !important;
+}
+
+.espdisp {
+    font-family: 'CASIO-ESP-Display-Normal-Font' !important;
+}
+
+.espsdisp {
+    font-family: 'CASIO-ESP-Display-Small-Font' !important;
+}
+
+.esdisp {
+    font-family: 'CASIO-ES-Display-Normal-Font' !important;
+}
+
+.essdisp {
+    font-family: 'CASIO-ES-Display-Small-Font' !important;
+}

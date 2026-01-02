@@ -1,0 +1,14 @@
+# DO NOT REMOVE. CLOUDLINUX PASSENGER CONFIGURATION BEGIN
+PassengerAppRoot "/home/uodybfyn/public_html/geoserver/geoview-proxy-server"
+PassengerBaseURI "/geoserver"
+PassengerNodejs "/home/uodybfyn/nodevenv/public_html/geoserver/geoview-proxy-server/18/bin/node"
+PassengerAppType node
+PassengerStartupFile server.js
+# DO NOT REMOVE. CLOUDLINUX PASSENGER CONFIGURATION END
+# DO NOT REMOVE OR MODIFY. CLOUDLINUX ENV VARS CONFIGURATION BEGIN
+<IfModule Litespeed>
+SetEnv GOOGLE_API_KEY AIzaSyCcIGWUDmKD54Swm73hNClWhSUnb8teEKY
+SetEnv GOOGLE_CX_ID 74d0e8c15c2904033
+SetEnv GOOGLE_CX_ID_2 36ef95b2412284b4a
+</IfModule>
+# DO NOT REMOVE OR MODIFY. CLOUDLINUX ENV VARS CONFIGURATION END

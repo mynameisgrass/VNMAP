@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<meta name="color-scheme" content="light dark">
+<title>Display Font Table (Specified Series) | 二级字符表（指定系列）</title>
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="../css/style_ESPT0Small.css">
+<link rel="stylesheet" href="../css/style_ESPT0.css">
+<link rel="stylesheet" href="../css/style_ESPSmall.css">
+<link rel="stylesheet" href="../css/style_ESP.css">
+<link rel="stylesheet" href="../css/style_EY.css">
+<link rel="stylesheet" href="../css/style_CY.css">
+<link rel="stylesheet" href="../css/style_ES.css">
+<link rel="stylesheet" href="../css/style_ESS.css">
+<link rel="stylesheet" href="../css/style_FC.css">
+<link rel="stylesheet" href="../css/style_FCS.css">
+<link rel="stylesheet" href="../css/style_EYS.css">
+<link rel="stylesheet" href="../css/style_CYS.css">
+<link rel="stylesheet" href="../css/style_CYT.css">
+<link rel="stylesheet" href="../css/style_EYT.css">
+<style>
+    :root {
+        --bg: #cccccc;
+        --surface: #ffffff;
+        --color: #000000;
+        --accent: #007bff;
+        --hover: #0056b3;
+        --radius: 4px;
+        --transition: 0.3s ease;
+    }
+
+    body, #main {
+        margin: 10px 1px;
+        padding: 0;
+        height: calc(100vh - 20px);
+    }
+
+    ::-webkit-scrollbar {
+        width: 6px;
+        height: 8px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: currentcolor;
+        border-radius: 4px;
+    }
+
+    #main {
+        display: flex;
+    }
+
+    #hexTableArea, #hexTableCtl {
+        overflow: auto;
+        flex: 1;
+    }
+
+    #hexTableCtl {
+        display: flex;
+        flex-direction: column;
+    }
+
+    @media (orientation: landscape) {
+        #main {
+            flex-direction: row;
+        }
+
+        #hexTableArea, #hexTableCtl {
+            flex: 1;
+            width: 50%;
+            height: 100%;
+            margin: 0 2px;
+        }
+
+        .cell {
+            font-size: 1.6rem;
+            min-width: 1.6rem;
+        }
+    }
+
+    @media (orientation: portrait) {
+        #main {
+            flex-direction: column;
+        }
+
+        #hexTableArea, #hexTableCtl {
+            flex: 1;
+            width: 100%;
+            height: 50%;
+        }
+
+        .cell {
+            font-size: 1rem;
+            min-width: 1rem;
+        }
+    }
+
+    .CY {
+        font-family: CASIO-CY-Display-Font !important;
+    }
+
+    .EY {
+        font-family: CASIO-EY-Display-Font !important;
+    }
+
+    .ESP {
+        font-family: CASIO-ESP-Display-Normal-Font !important;
+    }
+
+    .ESPS {
+        font-family: CASIO-ESP-Display-Small-Font !important;
+    }
+
+    .ESPT0 {
+        font-family: CASIO-ESP-Type0-Display-Normal !important;
+    }
+
+    .ESPT0S {
+        font-family: CASIO-ESP-Type0-Display-Small !important;
+    }
+
+    .ES {
+        font-family: CASIO-ES-Display-Normal-Font !important;
+    }
+
+    .ESS {
+        font-family: CASIO-ES-Display-Small-Font !important;
+    }
+
+    .FC {
+        font-family: CASIO-FC-Display-Normal-Font !important;
+    }
+
+    .FCS {
+        font-family: CASIO-FC-Display-Small-Font !important;
+    }
+
+    .EYS {
+        font-family: CASIO-EY-Display-Small-Font !important;
+    }
+
+    .CYS {
+        font-family: CASIO-CY-Display-Small-Font !important;
+    }
+
+    .EYT {
+        font-family: CASIO-EY-Display-Tiny-Font !important;
+    }
+
+    .CYT {
+        font-family: CASIO-CY-Display-Tiny-Font !important;
+    }
+
+    #baseTable {
+        display: none;
+    }
+
+    .table {
+        margin-bottom: 30px;
+        user-select: none;
+    }
+
+    .table thead tr th {
+        font-weight: normal;
+        padding-bottom: 0.8rem;
+    }
+
+    .tag {
+        text-align: center;
+    }
+
+    .cell.font {
+        cursor: pointer;
+        transition: background var(--transition), color var(--transition);
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    }
+
+    .cell.font:hover {
+        background-color: var(--bg);
+    }
+
+    .cell.font:active {
+        background-color: var(--accent);
+        color: var(--surface);
+    }
+
+    select {
+        min-width: 8rem;
+        border: 1px solid #ccc;
+    }
+
+    #input, #output, #input-hex, #level1 {
+        font-size: 1.5em;
+        width: 96%;
+        height: 4rem;
+        background-color: var(--surface);
+        color: var(--color);
+        border-radius: var(--radius);
+        word-break: break-all;
+    }
+
+    button {
+        font-size: 1em;
+        width: 48%;
+        cursor: pointer;
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: var(--radius);
+        background-color: var(--accent);
+        color: #fff;
+        transition: background var(--transition), opacity var(--transition);
+    }
+
+    button:hover {
+        background-color: var(--hover);
+    }
+
+    button:active {
+        opacity: 0.9;
+    }
+
+    #l-model-type {
+        margin-top: 5px;
+        display: flex;
+        margin-bottom: 5px;
+        align-items: center;
+    }
+
+    #cw-font-group, #font-size {
+        user-select: none;
+    }
+
+    #l-input-hex {
+        margin-top: 5px;
+    }
+
+    textarea,
+    select,
+    input[type="text"] {
+        padding: 0.2rem;
+        border: 1px solid #ccc;
+        border-radius: var(--radius);
+        font-size: 1rem;
+        outline: none;
+        transition: border var(--transition);
+    }
+
+    textarea:focus, select:focus, input[type="text"]:focus {
+        border-color: var(--accent);
+    }
+
+    #l-button {
+        flex: 1;
+    }
+
+    footer {
+        text-align: center;
+        margin-top: 25px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --color: #fff;
+            --surface: #3b3b3b;
+        }
+    }
+</style>
+<table id="baseTable" class="table">
+    <thead>
+    <tr class="row">
+        <th class="cell tag">--<sub>--</sub></th>
+        <th class="cell">0</th>
+        <th class="cell">1</th>
+        <th class="cell">2</th>
+        <th class="cell">3</th>
+        <th class="cell">4</th>
+        <th class="cell">5</th>
+        <th class="cell">6</th>
+        <th class="cell">7</th>
+        <th class="cell">8</th>
+        <th class="cell">9</th>
+        <th class="cell">A</th>
+        <th class="cell">B</th>
+        <th class="cell">C</th>
+        <th class="cell">D</th>
+        <th class="cell">E</th>
+        <th class="cell">F</th>
+    </tr>
+    </thead>
+</table>
+
+<div id="main">
+    <div id="hexTableArea">
+
+    </div>
+    <div id="hexTableCtl">
+        <div id="l-model-type">
+            <label for="model-type-select"></label>
+            <select id="model-type-select" name="model-type">
+                <option value="EY" selected>ClassWiz CW</option>
+                <option value="CY">ClassWiz X</option>
+                <option value="ESP">ES PLUS(Type 1)</option>
+                <option value="ESPT0">ES PLUS(Type 0)</option>
+                <option value="ES">ES</option>
+                <option value="FC">FC</option>
+            </select>
+            <span id="font-size">
+                <span id="fontSizeLargeOpt">
+                <input type="radio" id="fontSizeLarge" name="fontSize" value="large" checked><label for="fontSizeLarge">Large</label>
+                </span>
+                <span id="fontSizeSmallOpt">
+                <input type="radio" id="fontSizeSmall" name="fontSize" value="small"><label for="fontSizeSmall">Small</label>
+                </span>
+                <span id="fontSizeTinyOpt">
+                <input type="radio" id="fontSizeTiny" name="fontSize" value="tiny"><label for="fontSizeTiny">Tiny</label>
+                </span>
+            </span>
+        </div>
+        <div id="cw-font-group">
+            <span id="cwF1f2CnOpt">
+            <input type="checkbox" id="cwF1f2Cn" name="cw-f1f2" class="exclusive"><label for="cwF1f2Cn">F1/F2(CN)</label>
+            </span>
+            <span id="cwF1f2JaOpt">
+            <input type="checkbox" id="cwF1f2Ja" name="cw-f1f2" class="exclusive"><label for="cwF1f2Ja">F1/F2(JP)</label>
+            </span>
+            <span id="cwF3Opt">
+            <input type="checkbox" id="cwF3" name="cw-f3"><label for="cwF3">F3(EU)</label>
+            </span>
+            <span id="cwF4Opt">
+            <input type="checkbox" id="cwF4" name="cw-f4"><label for="cwF4">F4(VN)</label>
+            </span>
+        </div>
+
+        <div id="l-input-hex">
+            <label for="input-hex">Hex</label><br><textarea id="input-hex" placeholder="Input here"></textarea>
+        </div>
+        <div id="l-input">
+            <label for="input">Text</label><br><textarea id="input" placeholder="And here"></textarea>
+        </div>
+        <div id="l-output">
+            <label for="output">Display</label><br><textarea id="output" disabled></textarea>
+        </div>
+        <div id="l-level1" style="display: none;">
+            <label for="level1">Calculation Token</label>
+            <label for="level1-variant-select"></label>
+            <select id="level1-variant-select" name="level1-variant"></select>
+            <br><textarea id="level1"></textarea>
+        </div>
+        <div id="l-button">
+            <button id="clearAll">Clear All</button>
+            <button id="deleteOne">Delete</button>
+        </div>
+        <footer>
+            <div>
+                <a href="/">H.CA510.COM</a> &copy; All Rights Reserved
+            </div>
+        </footer>
+
+    </div>
+</div>
+<script>
+  let fontMapAll;
+
+  const inputHexArea = document.getElementById('input-hex');
+  const inputArea = document.getElementById('input');
+  const outputArea = document.getElementById('output');
+  const levelOneBlock = document.getElementById('l-level1');
+  const levelOneArea = document.getElementById('level1');
+  const levelVariantSelect = document.getElementById('level1-variant-select');
+
+  let modelType = localStorage.getItem('modelType') || 'EY';
+  let fontSize = localStorage.getItem('fontSize') || 'large';
+  const cwFontGroup = 'cwFontGroup_'
+  let inputMap = {};
+  let unicodeMap = {};
+  let levelOneMap = {};
+
+  const modelTypeList = ['CY', 'EY', 'ESP', 'ESPS', 'ESPT0', 'ESPT0S', 'ES', 'ESS', 'FC', 'FCS', 'EYS', 'CYS', 'EYT', 'CYT'];
+  // prefetch font
+  modelTypeList.forEach(modelType => {
+    const el = document.createElement('span');
+    el.classList.add(modelType);
+    el.innerHTML = '0';
+    document.body.appendChild(el);
+    window.getComputedStyle(el).getPropertyValue('font-family');
+    el.remove();
+  });
+
+  const init = async () => {
+    fontMapAll = await (await fetch('./public_font_map_dist.json')).json();
+    modelTypeList.forEach(modelType => levelOneMap[modelType] = { 'cn': {}, 'jp': {}, 'de': {}, 'vn': {} });
+    const eyVariantPath = {
+      'cn': '../1-level-font/fx999cncw_b.json',
+      'jp': '../1-level-font/fxjp900cw_a.json',
+      'de': '../1-level-font/fx991decw_a.json',
+      'vn': '../1-level-font/fx880btg_b.json',
+    };
+    const cyVariantPath = {
+      'cn': '../1-level-font/fx991cnx_c.json',
+      'jp': '../1-level-font/fxjp900_f.json',
+      'de': '../1-level-font/fx991dex_f.json',
+      'vn': '../1-level-font/fx580vnx_a.json',
+    };
+    for (const key in eyVariantPath) {
+      levelOneMap['EY'][key] = await (await fetch(eyVariantPath[key])).json()
+    }
+    for (const key in cyVariantPath) {
+      levelOneMap['CY'][key] = await (await fetch(cyVariantPath[key])).json()
+    }
+
+    modelTypeSelect.value = modelType;
+    document.querySelector(`input[name="fontSize"][value="${fontSize}"]`).checked = true;
+    for (let i = 0; i < localStorage.length; i++) {
+      let key = localStorage.key(i)
+      if (key.startsWith(cwFontGroup)) {
+        document.getElementById(key.replace(cwFontGroup, '')).checked = localStorage.getItem(key) === 'true'
+      }
+    }
+    rewriteTableArea(modelType);
+  }
+
+  init().catch((e) => {
+    alert('Failed to load, please refresh the page');
+    console.error(e);
+    location.reload();
+  });
+
+  const createTable = (modelType, label) => {
+    const table = document.getElementById('baseTable').cloneNode(true);
+    table.id = `${modelType}-${label}`;
+    table.classList.add(modelType);
+    const [lang, start] = label.split('_');
+    if (!modelType.startsWith('ES') && !modelType.startsWith('FC')) {
+      table.querySelector('table > thead > tr > th.cell.tag').innerHTML = `&nbsp;${start === '00' ? '−−' : start}&nbsp;`;
+    } else {
+      table.querySelector('table > thead > tr > th.cell.tag').innerHTML = '&nbsp;&nbsp;&nbsp;'
+    }
+    const tbody = document.createElement('tbody');
+    table.appendChild(tbody);
+
+    let classPrefix = '';
+    switch (modelType) {
+      case 'CY':
+        classPrefix = 'i-cy-';
+        break;
+      case 'EY':
+        classPrefix = 'i-ey-';
+        break;
+      case 'ESP':
+        classPrefix = 'i-esp-';
+        break;
+      case 'ESPS':
+        classPrefix = 'i-esps-';
+        break;
+      case 'ESPT0':
+        classPrefix = 'i-espt0-';
+        break;
+      case 'ESPT0S':
+        classPrefix = 'i-espt0s-';
+        break;
+      case 'ES':
+        classPrefix = 'i-es-';
+        break;
+      case 'ESS':
+        classPrefix = 'i-ess-';
+        break;
+      case 'FC':
+        classPrefix = 'i-fc-';
+        break;
+      case 'FCS':
+        classPrefix = 'i-fcs-';
+        break;
+      case 'EYS':
+        classPrefix = 'i-eys-';
+        break;
+      case 'CYS':
+        classPrefix = 'i-cys-';
+        break;
+      case 'EYT':
+        classPrefix = 'i-eyt-';
+        break;
+      case 'CYT':
+        classPrefix = 'i-cyt-';
+        break;
+    }
+    const fontMap = fontMapAll[modelType][label];
+    let row;
+    let j = (fontMap['start'] >> 4) & 0xF;
+    for (let i = fontMap['start']; i <= fontMap['end']; i++) {
+      if (i % 0x10 === 0) {
+        row = document.createElement('tr');
+        row.classList.add('row');
+        tbody.appendChild(row);
+        const td = document.createElement('td');
+        td.classList.add('cell', 'tag');
+        td.innerHTML = `${j.toString(16).toUpperCase()}`;
+        row.appendChild(td);
+        j++;
+      }
+      const key = i.toString(16).toUpperCase().padStart(2, '0');
+      const td = document.createElement('td');
+      td.classList.add('cell', 'font');
+      const span = document.createElement('span');
+      const className = `${classPrefix}${key}-${lang}`;
+      span.classList.add(className);
+      td.appendChild(span);
+      td.onclick = () => {
+        addHexCode(key);
+      }
+      row.appendChild(td);
+
+      let content = fontMap['inputMap'][key];
+      const unicode = parseInt(key, 16) + fontMap['unicodeOffset'];
+      const contentUnicode = String.fromCharCode(unicode);
+      if (!content) {
+        content = contentUnicode;
+      }
+      inputMap[key] = content;
+      unicodeMap[key] = contentUnicode;
+    }
+
+    hexTableArea.appendChild(table);
+  }
+
+  const matchHexCode = (hexValue) => {
+    switch (modelType) {
+      case "CY":
+      case "EY":
+        return hexValue.replace(/\s/g, "").toUpperCase().match(/F[\dA-F]{3}|[\dA-F]{2}/g);
+      case "ESP":
+      case "ESPT0":
+      case "ES":
+      case "FC":
+        return hexValue.replace(/\s/g, "").toUpperCase().match(/[\dA-F]{2}/g);
+    }
+  }
+
+  const addHexCode = (hexCode) => {
+    const hexValue = inputHexArea.value;
+    let split = matchHexCode(hexValue);
+    if (!split) {
+      split = [];
+    }
+    split.push(hexCode);
+    inputHexArea.value = split.join(' ');
+    inputHexArea.oninput(null);
+  }
+
+  const rewriteTableArea = (modelType) => {
+    hexTableArea.innerHTML = '';
+    inputMap = {};
+    const variantLabel = modelType === "EY" ? {
+      'cn': 'fx-999CN CW',
+      'jp': 'fx-JP900CW',
+      'de': 'fx-991DE CW',
+      'vn': 'fx-880BTG',
+    } : {
+      'cn': 'fx-991CN X',
+      'jp': 'fx-JP900',
+      'de': 'fx-991DE X',
+      'vn': 'fx-580VN X',
+    };
+    levelVariantSelect.innerHTML = '';
+    for (let key in variantLabel) {
+      const option = document.createElement('option');
+      option.text = variantLabel[key];
+      option.value = key;
+      levelVariantSelect.appendChild(option);
+    }
+
+    if (modelType === "CY" || modelType === "EY") {
+      levelOneBlock.style.display = '';
+      document.getElementById('cw-font-group').style.display = '';
+      fontSizeTinyOpt.style.display = '';
+      if (fontSize === 'large') {
+        cwF1f2CnOpt.style.display = '';
+        cwF1f2JaOpt.style.display = '';
+        cwF4Opt.style.display = '';
+        createTable(modelType, 'UN_00');
+        createTable(modelType, 'UN_F0');
+        if (cwF1f2Cn.checked) {
+          createTable(modelType, 'CN_F1');
+          if (modelType === 'EY') {
+            createTable(modelType, 'CN_F2');
+          }
+          levelVariantSelect.value = 'cn';
+        } else if (cwF1f2Ja.checked) {
+          createTable(modelType, 'JA_F1');
+          createTable(modelType, 'JA_F2');
+          levelVariantSelect.value = 'jp';
+        }
+        if (cwF3.checked) {
+          createTable(modelType, 'SR_F3');
+          levelVariantSelect.value = 'de';
+        }
+        if (cwF4.checked) {
+          createTable(modelType, 'VN_F4');
+          levelVariantSelect.value = 'vn';
+        }
+      } else if (fontSize === 'small') {
+        cwF1f2CnOpt.style.display = 'none';
+        cwF1f2JaOpt.style.display = 'none';
+        cwF4Opt.style.display = 'none';
+        modelType = `${modelType}S`;
+        createTable(modelType, 'UN_00');
+        createTable(modelType, 'UN_F0');
+        if (cwF3.checked) {
+          createTable(modelType, 'SR_F3');
+        }
+      } else if (fontSize === 'tiny') {
+        document.getElementById('cw-font-group').style.display = 'none';
+        modelType = `${modelType}T`;
+        createTable(modelType, 'UN_00');
+      }
+    } else {
+      levelOneBlock.style.display = 'none';
+      document.getElementById('cw-font-group').style.display = 'none';
+      fontSizeTinyOpt.style.display = 'none';
+      if (fontSize === 'tiny') {
+        fontSizeSmall.click();
+      }
+      if (modelType === "ESP") {
+        if (fontSize === 'large') {
+          createTable(modelType, 'UN_00');
+          createTable(modelType, 'UN_20');
+        } else if (fontSize === 'small') {
+          modelType = 'ESPS';
+          createTable(modelType, 'UNS_00');
+          createTable(modelType, 'UNS_20');
+        }
+      } else if (modelType === "ESPT0") {
+        if (fontSize === 'large') {
+          createTable(modelType, 'UNT0_00');
+          createTable(modelType, 'UNT0_20');
+        } else if (fontSize === 'small') {
+          modelType = 'ESPT0S';
+          createTable(modelType, 'UNT0S_00');
+          createTable(modelType, 'UNT0S_20');
+        }
+      } else if (modelType === "ES") {
+        if (fontSize === 'large') {
+          createTable(modelType, 'ES_20');
+        } else if (fontSize === 'small') {
+          modelType = 'ESS';
+          createTable(modelType, 'ESS_20');
+        }
+      } else if (modelType === "FC") {
+        if (fontSize === 'large') {
+          createTable(modelType, 'FC_20');
+        } else if (fontSize === 'small') {
+          modelType = 'FCS';
+          createTable(modelType, 'FCS_20');
+        }
+      }
+    }
+    outputArea.classList = '';
+    outputArea.classList.add(modelType);
+    levelOneArea.classList = '';
+    levelOneArea.classList.add(modelType);
+    inputHexArea.oninput(null);
+  }
+
+  const getUnicode = (split) => {
+    let inputNormal = '';
+    let output = '';
+    if (!split) {
+      return { inputNormal, output };
+    }
+    for (let i = 0; i < split.length; i++) {
+      const key = split[i];
+      const content = inputMap[key];
+      if (!content) {
+        continue;
+      }
+      inputNormal += content;
+      output += unicodeMap[key];
+    }
+    return { inputNormal, output };
+  };
+
+  inputHexArea.oninput = () => {
+    const hexValue = inputHexArea.value;
+    const split = matchHexCode(hexValue);
+    if (!split) {
+      inputArea.value = '';
+      outputArea.value = '';
+      levelOneArea.value = '';
+      return;
+    }
+
+    const { inputNormal, output } = getUnicode(split);
+    inputArea.value = inputNormal;
+    outputArea.value = output;
+    levelOneArea.value = getUnicode(matchHexCode(split.map(k => levelOneMap[modelType][levelVariantSelect.value][k]).join('')))['inputNormal'];
+  }
+
+  inputArea.oninput = () => {
+    const inputNormal = Array.from(inputArea.value);
+    let inputHex = [];
+    for (let i = 0; i < inputNormal.length; i++) {
+      const char = inputNormal[i];
+      const key = Object.keys(inputMap).reverse().find(key => inputMap[key] === char);
+      if (!key) {
+        continue;
+      }
+      inputHex.push(key);
+    }
+    inputHexArea.value = inputHex.join(' ');
+    inputHexArea.oninput(null);
+  }
+
+  clearAll.onclick = () => {
+    if (!confirm('Will Clear All, Continue?')) {
+      return;
+    }
+    inputHexArea.value = '';
+    inputHexArea.oninput(null);
+  }
+
+  deleteOne.onclick = () => {
+    const hexValue = inputHexArea.value;
+    const split = matchHexCode(hexValue);
+    if (!split) {
+      return;
+    }
+    split.pop();
+    inputHexArea.value = split.join(' ');
+    inputHexArea.oninput(null);
+  }
+
+  const modelTypeSelect = document.getElementById("model-type-select");
+  modelTypeSelect.addEventListener("change", () => {
+    modelType = modelTypeSelect.value;
+    rewriteTableArea(modelType);
+    localStorage.setItem('modelType', modelType);
+  });
+
+  const fontSizeRadio = document.querySelectorAll('input[name="fontSize"]');
+  fontSizeRadio.forEach(radioButton => {
+    radioButton.addEventListener('change', function () {
+      if (this.checked) {
+        fontSize = this.value;
+        rewriteTableArea(modelType);
+        localStorage.setItem('fontSize', fontSize);
+      }
+    });
+  });
+
+  const cwLocalCheckboxes = document.querySelectorAll('.exclusive');
+  cwLocalCheckboxes.forEach(checkbox => {
+    checkbox.addEventListener('click', function () {
+      cwLocalCheckboxes.forEach(cb => {
+        if (cb !== this) {
+          cb.checked = false;
+          localStorage.setItem(`${cwFontGroup}${cb.id}`, cb.checked);
+        }
+      });
+    });
+  })
+
+  cwF1f2Cn.onchange = cwF1f2Ja.onchange = cwF3.onchange = cwF4.onchange = (e) => {
+    rewriteTableArea(modelType);
+    localStorage.setItem('modelType', modelType);
+    localStorage.setItem(`${cwFontGroup}${e.target.id}`, e.target.checked)
+  }
+
+  levelVariantSelect.onchange = async () => {
+    inputHexArea.oninput(null);
+  }
+
+</script>
+</html>

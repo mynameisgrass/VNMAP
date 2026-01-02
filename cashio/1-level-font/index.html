@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<meta name="color-scheme" content="light dark">
+<title>Calculation Token & Display Font (Specified Model) | 一级二级字符表（指定机型）</title>
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="./table.css">
+<link rel="stylesheet" href="../css/style_FX991CNXVCNormal.css">
+<link rel="stylesheet" href="../css/style_FXJP900VFNormal.css">
+<link rel="stylesheet" href="../css/style_FX580VNXVANormal.css">
+<link rel="stylesheet" href="../css/style_FX991DEXVFNormal.css">
+<link rel="stylesheet" href="../css/style_FX999CNCWVBNormal.css">
+<link rel="stylesheet" href="../css/style_FXJP900CWVANormal.css">
+<link rel="stylesheet" href="../css/style_FX991DECWVANormal.css">
+<link rel="stylesheet" href="../css/style_FX880BTGVBNormal.css">
+<link rel="stylesheet" href="../css/style_FX999CNCWVANormal.css">
+<link rel="stylesheet" href="../css/style_FX991CNX-VF-Normal.css">
+<link rel="stylesheet" href="../css/style_FX991CNCWVANormal.css">
+<link rel="stylesheet" href="../css/style_FX991CNCWVBNormal.css">
+<link rel="stylesheet" href="../css/style_FX991EXVBNormal.css">
+<link rel="stylesheet" href="../css/style_FX991EXVFNormal.css">
+<style>
+    .CY239C {
+        font-family: 'FX991CNX-VC-Normal' !important;
+    }
+
+    .CY239F {
+        font-family: 'FX991CNX-VF-Normal' !important;
+    }
+
+    .CY235B {
+        font-family: 'FX991EX-VB-Normal' !important;
+    }
+
+    .CY235F {
+        font-family: 'FX991EX-VF-Normal' !important;
+    }
+
+    .CY243F {
+        font-family: 'FXJP900-VF-Normal' !important;
+    }
+
+    .CY298A {
+        font-family: 'FX580VNX-VA-Normal' !important;
+    }
+
+    .CY251F {
+        font-family: 'FX991DEX-VF-Normal' !important;
+    }
+
+    .EY027A {
+        font-family: 'FX991CNCW-VA-Normal' !important;
+    }
+
+    .EY027B {
+        font-family: 'FX991CNCW-VB-Normal' !important;
+    }
+
+    .EY028A {
+        font-family: 'FX999CNCW-VA-Normal' !important;
+    }
+
+    .EY028B {
+        font-family: 'FX999CNCW-VB-Normal' !important;
+    }
+
+    .EY031A {
+        font-family: 'FXJP900CW-VA-Normal' !important;
+    }
+
+    .EY015A {
+        font-family: 'FX991DECW-VA-Normal' !important;
+    }
+
+    .EY023B {
+        font-family: 'FX880BTG-VB-Normal' !important;
+    }
+
+    .level-2-table tr td:first-child {
+        text-align: center;
+    }
+
+    .level-2-table tr th {
+        text-align: center;
+    }
+</style>
+<h1><span>Calculation Token & Display Font</span><span>一级二级字符表</span></h1>
+<div id="app">
+    <div id="panel" class="panel">
+        <div class="form-group">
+            <label for="model">Model:</label>
+            <select id="model" name="model">
+                <option value="CY239C" data-model-type="CY" data-file="./fx991cnx_c.json" data-map="./fx991cnx_c_unicode_map.json" selected>
+                    fx-991CN X (VerC)
+                </option>
+                <option value="CY239F" data-model-type="CY" data-file="./fx991cnx_f.json" data-map="./fx991cnx_c_unicode_map.json">
+                    fx-991CN X (VerF)
+                </option>
+                <option value="EY028A" data-model-type="EY" data-file="./fx999cncw_b.json" data-map="./fx999cncw_b_unicode_map.json">
+                    fx-999CN CW (VerA)
+                </option>
+                <option value="EY028B" data-model-type="EY" data-file="./fx999cncw_b.json" data-map="./fx999cncw_b_unicode_map.json">
+                    fx-999CN CW (VerB)
+                </option>
+                <option value="EY027A" data-model-type="EY" data-file="./fx999cncw_b.json" data-map="./fx999cncw_b_unicode_map.json">
+                    fx-991CN CW (VerA)
+                </option>
+                <option value="EY027B" data-model-type="EY" data-file="./fx999cncw_b.json" data-map="./fx999cncw_b_unicode_map.json">
+                    fx-991CN CW (VerB)
+                </option>
+                <option value="CY235B" data-model-type="CY" data-file="./fx991ex_b.json" data-map="./fx991ex_b_unicode_map.json">
+                    fx-991EX (VerB)
+                </option>
+                <option value="CY235F" data-model-type="CY" data-file="./fx991ex_f.json" data-map="./fx991ex_b_unicode_map.json">
+                    fx-991EX (VerF)
+                </option>
+                <option value="CY243F" data-model-type="CY" data-file="./fxjp900_f.json" data-map="./fxjp900_f_unicode_map.json">
+                    fx-JP900 (VerF)
+                </option>
+                <option value="EY031A" data-model-type="EY" data-file="./fxjp900cw_a.json" data-map="./fxjp900cw_a_unicode_map.json">
+                    fx-JP900CW (VerA)
+                </option>
+                <option value="CY251F" data-model-type="CY" data-file="./fx991dex_f.json" data-map="./fx991dex_f_unicode_map.json">
+                    fx-991DE X (VerF)
+                </option>
+                <option value="EY015A" data-model-type="EY" data-file="./fx991decw_a.json" data-map="./fx991decw_a_unicode_map.json">
+                    fx-991DE CW (VerA)
+                </option>
+                <option value="CY298A" data-model-type="CY" data-file="./fx580vnx_a.json" data-map="./fx580vnx_a_unicode_map.json">
+                    fx-580VN X (VerA)
+                </option>
+                <option value="EY023B" data-model-type="EY" data-file="./fx880btg_b.json" data-map="./fx880btg_b_unicode_map.json">
+                    fx-880BTG (VerB)
+                </option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="display-level">Type:</label>
+            <select id="display-level" name="display-level">
+                <option value="1" selected>Calculation Token</option>
+                <option value="2">Display Font</option>
+            </select>
+        </div>
+
+        <div class="form-group" id="oneColumnPanel">
+            <label for="oneColumn">Render:</label>
+            <select id="oneColumn" name="one-column">
+                <option value="table" selected>Table</option>
+                <option value="column">Column</option>
+            </select>
+        </div>
+
+        <div class="form-group" id="show00FxPanel">
+            <input type="checkbox" id="show00Fx" name="show00Fx">
+            <label for="show00Fx">00Fx</label>
+        </div>
+    </div>
+
+    <div id="table-view"></div>
+</div>
+<footer>
+    <div>
+        <a href="/">H.CA510.COM</a> &copy; All Rights Reserved
+    </div>
+    <div>
+        特别鸣谢 / Special thanks to
+        <a href="https://github.com/telecomadm1145" target="_blank">telecomadm1145 </a>
+    </div>
+    <div>
+        数据来源于 / Data based on
+        <a href="https://github.com/telecomadm1145/cw2tools" target="_blank">cw2tools</a>
+    </div>
+    <div style="font-size: 0.9em; color: gray;">
+        含乱码的一级字符可能有误
+        <br>
+        Tokens containing garbled characters may be incorrect
+    </div>
+</footer>
+<script>
+  const modelElement = document.getElementById('model');
+  let modelOption;
+  const displayLevelElement = document.getElementById('display-level');
+  const show00FxElement = document.getElementById('show00Fx');
+  const show00FxPanel = document.getElementById('show00FxPanel');
+  const oneColumnElement = document.getElementById('oneColumn');
+
+  modelElement.value = localStorage.getItem('1-level-model') || 'CY239C';
+  displayLevelElement.value = localStorage.getItem('1-level-displayLevel') || '1';
+
+  let modelType;
+  let unicodeMap = {};
+
+  // preload fonts
+  const fontsPreload = async () => Array.from(modelElement.options).map(option => {
+    const el = document.createElement('span');
+    el.classList.add(option.value);
+    el.innerHTML = '0';
+    document.body.appendChild(el);
+    window.getComputedStyle(el).getPropertyValue('font-family');
+    el.remove();
+  });
+
+  /**
+   * @param num {number}
+   * @param pad {number}
+   * */
+  const hexStr = (num, pad = 2) => {
+    return num.toString(16).toUpperCase().padStart(pad, '0');
+  };
+
+  /**
+   * @param charCode {number}
+   * */
+  const getFontChar = (charCode) => {
+    return (unicodeMap[hexStr(charCode)] ?? String.fromCharCode(charCode + (charCode < 0x100 ? 0xE000 : 0xE100 - 0xF000))).replace(' ', '&nbsp;');
+  }
+
+  const init = async () => {
+    modelOption = modelElement.options[modelElement.selectedIndex];
+    modelType = modelOption.dataset.modelType;
+    unicodeMap = await (await fetch(modelOption.dataset.map)).json()
+    let table = '';
+    if (displayLevelElement.value === '1') {
+      show00FxPanel.style.display = '';
+      const prefix = [0, 0xfa, 0xfb, 0xfd, 0xfe];
+      const oneLevelMap = await (await fetch(modelOption.dataset.file)).json();
+      for (const i of prefix) {
+        table += oneColumnElement.value === 'table' ? `<div class="table-container"><table class="level-1-table table-view"><thead>
+ <tr>
+    <th>${hexStr(i)}</th>
+    ${Array.from({ length: 0x10 }, (_, i) => `<th>${hexStr(i, 1)}</th>`).join('')}
+  </tr></thead>
+<tbody>
+${Array.from({ length: !show00FxElement.checked && i === 0 ? 0xf : 0x10 }, (_, j) => `
+ <tr>
+    <td>${hexStr(j, 1)}</td>
+${Array.from({ length: 0x10 }, (_, k) => {
+          const key = hexStr(i * 0x100 + j * 0x10 + k);
+          const split = matchHexCode(oneLevelMap[key]);
+          const token = split.map(t => getFontChar(parseInt(t, 16))).join('');
+          return `<td class="${modelOption.value}">${token}</td>`
+        }).join('')}
+  </tr>
+`).join('')}
+</tbody></table></div>` : `<div class="table-container"><table class="level-1-table table-view" style="min-width: unset"><tbody>
+${Array.from({ length: !show00FxElement.checked && i === 0 ? 0xf : 0x10 }, (_, j) => `
+${Array.from({ length: 0x10 }, (_, k) => {
+          const key = hexStr(i * 0x100 + j * 0x10 + k);
+          const split = matchHexCode(oneLevelMap[key]);
+          const token = split.map(t => getFontChar(parseInt(t, 16))).join('');
+          return `<tr><td>${key}</td><td class="${modelOption.value}">${token}</td></tr>`
+        }).join('')}
+`).join('')}
+</tbody></table></div>`;
+      }
+    } else if (displayLevelElement.value === '2') {
+      show00FxPanel.style.display = 'none';
+      const prefix = [0, ...Array.from({ length: 0x10 }, (_, i) => i + 0xf0)];
+      for (const i of prefix) {
+        table += oneColumnElement.value === 'table' ? `<div class="table-container"><table class="level-2-table table-view"><thead>
+ <tr>
+    <th>${hexStr(i)}</th>
+    ${Array.from({ length: 0x10 }, (_, i) => `<th>${hexStr(i, 1)}</th>`).join('')}
+  </tr></thead>
+<tbody>
+${Array.from({ length: 0x10 }, (_, j) => `
+ <tr>
+    <td>${hexStr(j, 1)}</td>
+${Array.from({ length: 0x10 }, (_, k) => `<td class="${modelOption.value}">${getFontChar(i * 0x100 + j * 0x10 + k)}</td>`).join('')}
+  </tr>
+`).join('')}
+</tbody></table></div>` : `<div class="table-container"><table class="level-2-table table-view" style="min-width: unset">
+${Array.from({ length: 0x10 }, (_, j) => `
+${Array.from({ length: 0x10 }, (_, k) => `<tr><td>${hexStr(i * 0x100 + j * 0x10 + k)}</td><td class="${modelOption.value}">${getFontChar(i * 0x100 + j * 0x10 + k)}</td></tr>`).join('')}
+`).join('')}
+</table></div>`;
+      }
+    }
+    document.getElementById('table-view').innerHTML = table;
+  };
+
+  const matchHexCode = (hexValue) => {
+    if (!hexValue) {
+      return [];
+    }
+    switch (modelType) {
+      case "CY":
+      case "EY":
+        return hexValue.replace(/\s/g, "").toUpperCase().match(/F[\dA-F]{3}|[\dA-F]{2}/g) || [];
+      case "ESP":
+      case "ESPT0":
+      case "ES":
+      case "FC":
+        return hexValue.replace(/\s/g, "").toUpperCase().match(/[\dA-F]{2}/g) || [];
+    }
+  }
+
+  modelElement.onchange = show00FxElement.onchange = displayLevelElement.onchange = oneColumnElement.onchange = () => {
+    init();
+    localStorage.setItem('1-level-model', modelElement.value);
+    localStorage.setItem('1-level-displayLevel', displayLevelElement.value);
+  }
+
+  init().then(() => fontsPreload());
+</script>
+</html>

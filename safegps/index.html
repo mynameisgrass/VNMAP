@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeGPS Dashboard</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="app-view" class="view hidden">
+        <aside id="sidebar">
+            <div class="sidebar-header">
+                <h3><i class="fas fa-satellite-dish"></i> Thiết bị</h3>
+                <button id="add-device-btn" title="Thêm thiết bị mới"><i class="fas fa-plus"></i></button>
+            </div>
+            <ul id="device-list">
+                <!-- JS will render device list here -->
+            </ul>
+            <div class="sidebar-footer">
+                <span id="user-email"></span>
+                <button id="logout-btn"><i class="fas fa-sign-out-alt"></i> Đăng xuất</button>
+            </div>
+        </aside>
+        
+        <main id="map-container">
+            <div id="map"></div>
+            <button id="toggle-sidebar-btn"><i class="fas fa-bars"></i></button>
+            <div id="map-controls" class="hidden">
+                <select id="date-filter">
+                    <option value="today">Hôm nay</option>
+                    <option value="yesterday">Hôm qua</option>
+                    <option value="last7days">7 ngày qua</option>
+                </select>
+                <button id="manage-alerts-btn"><i class="fas fa-shield-alt"></i> Cảnh báo</button>
+            </div>
+        </main>
+    </div>
+
+    <!-- Generic Modal Container -->
+    <div id="modal-overlay" class="modal-overlay hidden">
+        <div class="modal-content">
+            <button class="modal-close-btn">&times;</button>
+            <h3 id="modal-title"></h3>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+    
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

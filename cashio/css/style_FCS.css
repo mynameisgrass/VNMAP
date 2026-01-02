@@ -1,0 +1,1035 @@
+@font-face {
+  font-family: 'CASIO-FC-Display-Small-Font';
+  src:  url('fonts/CASIO-FC-Display-Small-Font.eot?av66f6');
+  src:  url('fonts/CASIO-FC-Display-Small-Font.eot?av66f6#iefix') format('embedded-opentype'),
+    url('fonts/CASIO-FC-Display-Small-Font.ttf?av66f6') format('truetype'),
+    url('fonts/CASIO-FC-Display-Small-Font.woff?av66f6') format('woff'),
+    url('fonts/CASIO-FC-Display-Small-Font.svg?av66f6#CASIO-FC-Display-Small-Font') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="i-fcs-"], [class*=" i-fcs-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'CASIO-FC-Display-Small-Font' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.i-fcs-2A-FCS:before {
+  content: "\e02a";
+}
+.i-fcs-2B-FCS:before {
+  content: "\e02b";
+}
+.i-fcs-2C-FCS:before {
+  content: "\e02c";
+}
+.i-fcs-2D-FCS:before {
+  content: "\e02d";
+}
+.i-fcs-2E-FCS:before {
+  content: "\e02e";
+}
+.i-fcs-2F-FCS:before {
+  content: "\e02f";
+}
+.i-fcs-3A-FCS:before {
+  content: "\e03a";
+}
+.i-fcs-3B-FCS:before {
+  content: "\e03b";
+}
+.i-fcs-3C-FCS:before {
+  content: "\e03c";
+}
+.i-fcs-3D-FCS:before {
+  content: "\e03d";
+}
+.i-fcs-3E-FCS:before {
+  content: "\e03e";
+}
+.i-fcs-3F-FCS:before {
+  content: "\e03f";
+}
+.i-fcs-4A-FCS:before {
+  content: "\e04a";
+}
+.i-fcs-4B-FCS:before {
+  content: "\e04b";
+}
+.i-fcs-4C-FCS:before {
+  content: "\e04c";
+}
+.i-fcs-4D-FCS:before {
+  content: "\e04d";
+}
+.i-fcs-4E-FCS:before {
+  content: "\e04e";
+}
+.i-fcs-4F-FCS:before {
+  content: "\e04f";
+}
+.i-fcs-5A-FCS:before {
+  content: "\e05a";
+}
+.i-fcs-5B-FCS:before {
+  content: "\e05b";
+}
+.i-fcs-5C-FCS:before {
+  content: "\e05c";
+}
+.i-fcs-5D-FCS:before {
+  content: "\e05d";
+}
+.i-fcs-5E-FCS:before {
+  content: "\e05e";
+}
+.i-fcs-5F-FCS:before {
+  content: "\e05f";
+}
+.i-fcs-6A-FCS:before {
+  content: "\e06a";
+}
+.i-fcs-6B-FCS:before {
+  content: "\e06b";
+}
+.i-fcs-6C-FCS:before {
+  content: "\e06c";
+}
+.i-fcs-6D-FCS:before {
+  content: "\e06d";
+}
+.i-fcs-6E-FCS:before {
+  content: "\e06e";
+}
+.i-fcs-6F-FCS:before {
+  content: "\e06f";
+}
+.i-fcs-7A-FCS:before {
+  content: "\e07a";
+}
+.i-fcs-7B-FCS:before {
+  content: "\e07b";
+}
+.i-fcs-7C-FCS:before {
+  content: "\e07c";
+}
+.i-fcs-7D-FCS:before {
+  content: "\e07d";
+}
+.i-fcs-7E-FCS:before {
+  content: "\e07e";
+}
+.i-fcs-7F-FCS:before {
+  content: "\e07f";
+}
+.i-fcs-8A-FCS:before {
+  content: "\e08a";
+}
+.i-fcs-8B-FCS:before {
+  content: "\e08b";
+}
+.i-fcs-8C-FCS:before {
+  content: "\e08c";
+}
+.i-fcs-8D-FCS:before {
+  content: "\e08d";
+}
+.i-fcs-8E-FCS:before {
+  content: "\e08e";
+}
+.i-fcs-8F-FCS:before {
+  content: "\e08f";
+}
+.i-fcs-9A-FCS:before {
+  content: "\e09a";
+}
+.i-fcs-9B-FCS:before {
+  content: "\e09b";
+}
+.i-fcs-9C-FCS:before {
+  content: "\e09c";
+}
+.i-fcs-9D-FCS:before {
+  content: "\e09d";
+}
+.i-fcs-9E-FCS:before {
+  content: "\e09e";
+}
+.i-fcs-9F-FCS:before {
+  content: "\e09f";
+}
+.i-fcs-20-FCS:before {
+  content: "\e020";
+}
+.i-fcs-21-FCS:before {
+  content: "\e021";
+}
+.i-fcs-22-FCS:before {
+  content: "\e022";
+}
+.i-fcs-23-FCS:before {
+  content: "\e023";
+}
+.i-fcs-24-FCS:before {
+  content: "\e024";
+}
+.i-fcs-25-FCS:before {
+  content: "\e025";
+}
+.i-fcs-26-FCS:before {
+  content: "\e026";
+}
+.i-fcs-27-FCS:before {
+  content: "\e027";
+}
+.i-fcs-28-FCS:before {
+  content: "\e028";
+}
+.i-fcs-29-FCS:before {
+  content: "\e029";
+}
+.i-fcs-30-FCS:before {
+  content: "\e030";
+}
+.i-fcs-31-FCS:before {
+  content: "\e031";
+}
+.i-fcs-32-FCS:before {
+  content: "\e032";
+}
+.i-fcs-33-FCS:before {
+  content: "\e033";
+}
+.i-fcs-34-FCS:before {
+  content: "\e034";
+}
+.i-fcs-35-FCS:before {
+  content: "\e035";
+}
+.i-fcs-36-FCS:before {
+  content: "\e036";
+}
+.i-fcs-37-FCS:before {
+  content: "\e037";
+}
+.i-fcs-38-FCS:before {
+  content: "\e038";
+}
+.i-fcs-39-FCS:before {
+  content: "\e039";
+}
+.i-fcs-40-FCS:before {
+  content: "\e040";
+}
+.i-fcs-41-FCS:before {
+  content: "\e041";
+}
+.i-fcs-42-FCS:before {
+  content: "\e042";
+}
+.i-fcs-43-FCS:before {
+  content: "\e043";
+}
+.i-fcs-44-FCS:before {
+  content: "\e044";
+}
+.i-fcs-45-FCS:before {
+  content: "\e045";
+}
+.i-fcs-46-FCS:before {
+  content: "\e046";
+}
+.i-fcs-47-FCS:before {
+  content: "\e047";
+}
+.i-fcs-48-FCS:before {
+  content: "\e048";
+}
+.i-fcs-49-FCS:before {
+  content: "\e049";
+}
+.i-fcs-50-FCS:before {
+  content: "\e050";
+}
+.i-fcs-51-FCS:before {
+  content: "\e051";
+}
+.i-fcs-52-FCS:before {
+  content: "\e052";
+}
+.i-fcs-53-FCS:before {
+  content: "\e053";
+}
+.i-fcs-54-FCS:before {
+  content: "\e054";
+}
+.i-fcs-55-FCS:before {
+  content: "\e055";
+}
+.i-fcs-56-FCS:before {
+  content: "\e056";
+}
+.i-fcs-57-FCS:before {
+  content: "\e057";
+}
+.i-fcs-58-FCS:before {
+  content: "\e058";
+}
+.i-fcs-59-FCS:before {
+  content: "\e059";
+}
+.i-fcs-60-FCS:before {
+  content: "\e060";
+}
+.i-fcs-61-FCS:before {
+  content: "\e061";
+}
+.i-fcs-62-FCS:before {
+  content: "\e062";
+}
+.i-fcs-63-FCS:before {
+  content: "\e063";
+}
+.i-fcs-64-FCS:before {
+  content: "\e064";
+}
+.i-fcs-65-FCS:before {
+  content: "\e065";
+}
+.i-fcs-66-FCS:before {
+  content: "\e066";
+}
+.i-fcs-67-FCS:before {
+  content: "\e067";
+}
+.i-fcs-68-FCS:before {
+  content: "\e068";
+}
+.i-fcs-69-FCS:before {
+  content: "\e069";
+}
+.i-fcs-70-FCS:before {
+  content: "\e070";
+}
+.i-fcs-71-FCS:before {
+  content: "\e071";
+}
+.i-fcs-72-FCS:before {
+  content: "\e072";
+}
+.i-fcs-73-FCS:before {
+  content: "\e073";
+}
+.i-fcs-74-FCS:before {
+  content: "\e074";
+}
+.i-fcs-75-FCS:before {
+  content: "\e075";
+}
+.i-fcs-76-FCS:before {
+  content: "\e076";
+}
+.i-fcs-77-FCS:before {
+  content: "\e077";
+}
+.i-fcs-78-FCS:before {
+  content: "\e078";
+}
+.i-fcs-79-FCS:before {
+  content: "\e079";
+}
+.i-fcs-80-FCS:before {
+  content: "\e080";
+}
+.i-fcs-81-FCS:before {
+  content: "\e081";
+}
+.i-fcs-82-FCS:before {
+  content: "\e082";
+}
+.i-fcs-83-FCS:before {
+  content: "\e083";
+}
+.i-fcs-84-FCS:before {
+  content: "\e084";
+}
+.i-fcs-85-FCS:before {
+  content: "\e085";
+}
+.i-fcs-86-FCS:before {
+  content: "\e086";
+}
+.i-fcs-87-FCS:before {
+  content: "\e087";
+}
+.i-fcs-88-FCS:before {
+  content: "\e088";
+}
+.i-fcs-89-FCS:before {
+  content: "\e089";
+}
+.i-fcs-90-FCS:before {
+  content: "\e090";
+}
+.i-fcs-91-FCS:before {
+  content: "\e091";
+}
+.i-fcs-92-FCS:before {
+  content: "\e092";
+}
+.i-fcs-93-FCS:before {
+  content: "\e093";
+}
+.i-fcs-94-FCS:before {
+  content: "\e094";
+}
+.i-fcs-95-FCS:before {
+  content: "\e095";
+}
+.i-fcs-96-FCS:before {
+  content: "\e096";
+}
+.i-fcs-97-FCS:before {
+  content: "\e097";
+}
+.i-fcs-98-FCS:before {
+  content: "\e098";
+}
+.i-fcs-99-FCS:before {
+  content: "\e099";
+}
+.i-fcs-A0-FCS:before {
+  content: "\e0a0";
+}
+.i-fcs-A1-FCS:before {
+  content: "\e0a1";
+}
+.i-fcs-A2-FCS:before {
+  content: "\e0a2";
+}
+.i-fcs-A3-FCS:before {
+  content: "\e0a3";
+}
+.i-fcs-A4-FCS:before {
+  content: "\e0a4";
+}
+.i-fcs-A5-FCS:before {
+  content: "\e0a5";
+}
+.i-fcs-A6-FCS:before {
+  content: "\e0a6";
+}
+.i-fcs-A7-FCS:before {
+  content: "\e0a7";
+}
+.i-fcs-A8-FCS:before {
+  content: "\e0a8";
+}
+.i-fcs-A9-FCS:before {
+  content: "\e0a9";
+}
+.i-fcs-AA-FCS:before {
+  content: "\e0aa";
+}
+.i-fcs-AB-FCS:before {
+  content: "\e0ab";
+}
+.i-fcs-AC-FCS:before {
+  content: "\e0ac";
+}
+.i-fcs-AD-FCS:before {
+  content: "\e0ad";
+}
+.i-fcs-AE-FCS:before {
+  content: "\e0ae";
+}
+.i-fcs-AF-FCS:before {
+  content: "\e0af";
+}
+.i-fcs-B0-FCS:before {
+  content: "\e0b0";
+}
+.i-fcs-B1-FCS:before {
+  content: "\e0b1";
+}
+.i-fcs-B2-FCS:before {
+  content: "\e0b2";
+}
+.i-fcs-B3-FCS:before {
+  content: "\e0b3";
+}
+.i-fcs-B4-FCS:before {
+  content: "\e0b4";
+}
+.i-fcs-B5-FCS:before {
+  content: "\e0b5";
+}
+.i-fcs-B6-FCS:before {
+  content: "\e0b6";
+}
+.i-fcs-B7-FCS:before {
+  content: "\e0b7";
+}
+.i-fcs-B8-FCS:before {
+  content: "\e0b8";
+}
+.i-fcs-B9-FCS:before {
+  content: "\e0b9";
+}
+.i-fcs-BA-FCS:before {
+  content: "\e0ba";
+}
+.i-fcs-BB-FCS:before {
+  content: "\e0bb";
+}
+.i-fcs-BC-FCS:before {
+  content: "\e0bc";
+}
+.i-fcs-BD-FCS:before {
+  content: "\e0bd";
+}
+.i-fcs-BE-FCS:before {
+  content: "\e0be";
+}
+.i-fcs-BF-FCS:before {
+  content: "\e0bf";
+}
+.i-fcs-C0-FCS:before {
+  content: "\e0c0";
+}
+.i-fcs-C1-FCS:before {
+  content: "\e0c1";
+}
+.i-fcs-C2-FCS:before {
+  content: "\e0c2";
+}
+.i-fcs-C3-FCS:before {
+  content: "\e0c3";
+}
+.i-fcs-C4-FCS:before {
+  content: "\e0c4";
+}
+.i-fcs-C5-FCS:before {
+  content: "\e0c5";
+}
+.i-fcs-C6-FCS:before {
+  content: "\e0c6";
+}
+.i-fcs-C7-FCS:before {
+  content: "\e0c7";
+}
+.i-fcs-C8-FCS:before {
+  content: "\e0c8";
+}
+.i-fcs-C9-FCS:before {
+  content: "\e0c9";
+}
+.i-fcs-CA-FCS:before {
+  content: "\e0ca";
+}
+.i-fcs-CB-FCS:before {
+  content: "\e0cb";
+}
+.i-fcs-CC-FCS:before {
+  content: "\e0cc";
+}
+.i-fcs-CD-FCS:before {
+  content: "\e0cd";
+}
+.i-fcs-CE-FCS:before {
+  content: "\e0ce";
+}
+.i-fcs-CF-FCS:before {
+  content: "\e0cf";
+}
+.i-fcs-1D00-FCS-Input:before {
+  content: "\1d00";
+}
+.i-fcs-1D04-FCS-Input:before {
+  content: "\1d04";
+}
+.i-fcs-1D4D-FCS-Input:before {
+  content: "\1d4d";
+}
+.i-fcs-1D5D4-FCS-Input:before {
+  content: "\1d5d4";
+}
+.i-fcs-1D5D5-FCS-Input:before {
+  content: "\1d5d5";
+}
+.i-fcs-1D5D6-FCS-Input:before {
+  content: "\1d5d6";
+}
+.i-fcs-1D5D7-FCS-Input:before {
+  content: "\1d5d7";
+}
+.i-fcs-1D5D8-FCS-Input:before {
+  content: "\1d5d8";
+}
+.i-fcs-1D5D9-FCS-Input:before {
+  content: "\1d5d9";
+}
+.i-fcs-1D5E3-FCS-Input:before {
+  content: "\1d5e3";
+}
+.i-fcs-1D6FC-FCS-Input:before {
+  content: "\1d6fc";
+}
+.i-fcs-1D6FE-FCS-Input:before {
+  content: "\1d6fe";
+}
+.i-fcs-1D18-FCS-Input:before {
+  content: "\1d18";
+}
+.i-fcs-1D40C-FCS-Input:before {
+  content: "\1d40c";
+}
+.i-fcs-1D48A-FCS-Input:before {
+  content: "\1d48a";
+}
+.i-fcs-1D70B-FCS-Input:before {
+  content: "\1d70b";
+}
+.i-fcs-1D70E-FCS-Input:before {
+  content: "\1d70e";
+}
+.i-fcs-1D406-FCS-Input:before {
+  content: "\1d406";
+}
+.i-fcs-1D427-FCS-Input:before {
+  content: "\1d427";
+}
+.i-fcs-1D486-FCS-Input:before {
+  content: "\1d486";
+}
+.i-fcs-1D700-FCS-Input:before {
+  content: "\1d700";
+}
+.i-fcs-1D703-FCS-Input:before {
+  content: "\1d703";
+}
+.i-fcs-1D706-FCS-Input:before {
+  content: "\1d706";
+}
+.i-fcs-1D707-FCS-Input:before {
+  content: "\1d707";
+}
+.i-fcs-1D719-FCS-Input:before {
+  content: "\1d719";
+}
+.i-fcs-2B3-FCS-Input:before {
+  content: "\2b3";
+}
+.i-fcs-2B-FCS-Input:before {
+  content: "\2b";
+}
+.i-fcs-2C-FCS-Input:before {
+  content: "\2c";
+}
+.i-fcs-2D-FCS-Input:before {
+  content: "\2d";
+}
+.i-fcs-2E-FCS-Input:before {
+  content: "\2e";
+}
+.i-fcs-2F-FCS-Input:before {
+  content: "\2f";
+}
+.i-fcs-3A-FCS-Input:before {
+  content: "\3a";
+}
+.i-fcs-3B-FCS-Input:before {
+  content: "\3b";
+}
+.i-fcs-3C-FCS-Input:before {
+  content: "\3c";
+}
+.i-fcs-3D-FCS-Input:before {
+  content: "\3d";
+}
+.i-fcs-3E-FCS-Input:before {
+  content: "\3e";
+}
+.i-fcs-3F-FCS-Input:before {
+  content: "\3f";
+}
+.i-fcs-4A-FCS-Input:before {
+  content: "\4a";
+}
+.i-fcs-4B-FCS-Input:before {
+  content: "\4b";
+}
+.i-fcs-4C-FCS-Input:before {
+  content: "\4c";
+}
+.i-fcs-4D-FCS-Input:before {
+  content: "\4d";
+}
+.i-fcs-4E-FCS-Input:before {
+  content: "\4e";
+}
+.i-fcs-4F-FCS-Input:before {
+  content: "\4f";
+}
+.i-fcs-5A-FCS-Input:before {
+  content: "\5a";
+}
+.i-fcs-5B-FCS-Input:before {
+  content: "\5b";
+}
+.i-fcs-5D-FCS-Input:before {
+  content: "\5d";
+}
+.i-fcs-5E-FCS-Input:before {
+  content: "\5e";
+}
+.i-fcs-5F-FCS-Input:before {
+  content: "\5f";
+}
+.i-fcs-6A-FCS-Input:before {
+  content: "\6a";
+}
+.i-fcs-6B-FCS-Input:before {
+  content: "\6b";
+}
+.i-fcs-6C-FCS-Input:before {
+  content: "\6c";
+}
+.i-fcs-6D-FCS-Input:before {
+  content: "\6d";
+}
+.i-fcs-6E-FCS-Input:before {
+  content: "\6e";
+}
+.i-fcs-6F-FCS-Input:before {
+  content: "\6f";
+}
+.i-fcs-7A-FCS-Input:before {
+  content: "\7a";
+}
+.i-fcs-7B-FCS-Input:before {
+  content: "\7b";
+}
+.i-fcs-7C-FCS-Input:before {
+  content: "\7c";
+}
+.i-fcs-7D-FCS-Input:before {
+  content: "\7d";
+}
+.i-fcs-7E-FCS-Input:before {
+  content: "\7e";
+}
+.i-fcs-20-FCS-Input:before {
+  content: "\20";
+}
+.i-fcs-21B5-FCS-Input:before {
+  content: "\21b5";
+}
+.i-fcs-21D2-FCS-Input:before {
+  content: "\21d2";
+}
+.i-fcs-21-FCS-Input:before {
+  content: "\21";
+}
+.i-fcs-22C5-FCS-Input:before {
+  content: "\22c5";
+}
+.i-fcs-22-FCS-Input:before {
+  content: "\22";
+}
+.i-fcs-23-FCS-Input:before {
+  content: "\23";
+}
+.i-fcs-25AB-FCS-Input:before {
+  content: "\25ab";
+}
+.i-fcs-25AE-FCS-Input:before {
+  content: "\25ae";
+}
+.i-fcs-25AF-FCS-Input:before {
+  content: "\25af";
+}
+.i-fcs-25B6-FCS-Input:before {
+  content: "\25b6";
+}
+.i-fcs-25B7-FCS-Input:before {
+  content: "\25b7";
+}
+.i-fcs-25C0-FCS-Input:before {
+  content: "\25c0";
+}
+.i-fcs-25-FCS-Input:before {
+  content: "\25";
+}
+.i-fcs-25FF-FCS-Input:before {
+  content: "\25ff";
+}
+.i-fcs-27-FCS-Input:before {
+  content: "\27";
+}
+.i-fcs-28-FCS-Input:before {
+  content: "\28";
+}
+.i-fcs-29-FCS-Input:before {
+  content: "\29";
+}
+.i-fcs-30-FCS-Input:before {
+  content: "\30";
+}
+.i-fcs-31-FCS-Input:before {
+  content: "\31";
+}
+.i-fcs-32-FCS-Input:before {
+  content: "\32";
+}
+.i-fcs-33-FCS-Input:before {
+  content: "\33";
+}
+.i-fcs-34-FCS-Input:before {
+  content: "\34";
+}
+.i-fcs-35-FCS-Input:before {
+  content: "\35";
+}
+.i-fcs-36-FCS-Input:before {
+  content: "\36";
+}
+.i-fcs-37-FCS-Input:before {
+  content: "\37";
+}
+.i-fcs-38-FCS-Input:before {
+  content: "\38";
+}
+.i-fcs-39-FCS-Input:before {
+  content: "\39";
+}
+.i-fcs-40-FCS-Input:before {
+  content: "\40";
+}
+.i-fcs-41-FCS-Input:before {
+  content: "\41";
+}
+.i-fcs-42-FCS-Input:before {
+  content: "\42";
+}
+.i-fcs-43-FCS-Input:before {
+  content: "\43";
+}
+.i-fcs-44-FCS-Input:before {
+  content: "\44";
+}
+.i-fcs-45-FCS-Input:before {
+  content: "\45";
+}
+.i-fcs-46-FCS-Input:before {
+  content: "\46";
+}
+.i-fcs-47-FCS-Input:before {
+  content: "\47";
+}
+.i-fcs-48-FCS-Input:before {
+  content: "\48";
+}
+.i-fcs-49-FCS-Input:before {
+  content: "\49";
+}
+.i-fcs-50-FCS-Input:before {
+  content: "\50";
+}
+.i-fcs-51-FCS-Input:before {
+  content: "\51";
+}
+.i-fcs-52-FCS-Input:before {
+  content: "\52";
+}
+.i-fcs-53-FCS-Input:before {
+  content: "\53";
+}
+.i-fcs-54-FCS-Input:before {
+  content: "\54";
+}
+.i-fcs-55-FCS-Input:before {
+  content: "\55";
+}
+.i-fcs-56-FCS-Input:before {
+  content: "\56";
+}
+.i-fcs-57-FCS-Input:before {
+  content: "\57";
+}
+.i-fcs-58-FCS-Input:before {
+  content: "\58";
+}
+.i-fcs-59-FCS-Input:before {
+  content: "\59";
+}
+.i-fcs-61-FCS-Input:before {
+  content: "\61";
+}
+.i-fcs-62-FCS-Input:before {
+  content: "\62";
+}
+.i-fcs-63-FCS-Input:before {
+  content: "\63";
+}
+.i-fcs-64-FCS-Input:before {
+  content: "\64";
+}
+.i-fcs-65-FCS-Input:before {
+  content: "\65";
+}
+.i-fcs-66-FCS-Input:before {
+  content: "\66";
+}
+.i-fcs-67-FCS-Input:before {
+  content: "\67";
+}
+.i-fcs-68-FCS-Input:before {
+  content: "\68";
+}
+.i-fcs-69-FCS-Input:before {
+  content: "\69";
+}
+.i-fcs-70-FCS-Input:before {
+  content: "\70";
+}
+.i-fcs-71-FCS-Input:before {
+  content: "\71";
+}
+.i-fcs-72-FCS-Input:before {
+  content: "\72";
+}
+.i-fcs-73-FCS-Input:before {
+  content: "\73";
+}
+.i-fcs-74-FCS-Input:before {
+  content: "\74";
+}
+.i-fcs-75-FCS-Input:before {
+  content: "\75";
+}
+.i-fcs-76-FCS-Input:before {
+  content: "\76";
+}
+.i-fcs-77-FCS-Input:before {
+  content: "\77";
+}
+.i-fcs-78-FCS-Input:before {
+  content: "\78";
+}
+.i-fcs-79-FCS-Input:before {
+  content: "\79";
+}
+.i-fcs-210F-FCS-Input:before {
+  content: "\210f";
+}
+.i-fcs-221A-FCS-Input:before {
+  content: "\221a";
+}
+.i-fcs-231F-FCS-Input:before {
+  content: "\231f";
+}
+.i-fcs-263A-FCS-Input:before {
+  content: "\263a";
+}
+.i-fcs-274-FCS-Input:before {
+  content: "\274";
+}
+.i-fcs-299-FCS-Input:before {
+  content: "\299";
+}
+.i-fcs-2070-FCS-Input:before {
+  content: "\2070";
+}
+.i-fcs-2074-FCS-Input:before {
+  content: "\2074";
+}
+.i-fcs-2075-FCS-Input:before {
+  content: "\2075";
+}
+.i-fcs-2076-FCS-Input:before {
+  content: "\2076";
+}
+.i-fcs-2077-FCS-Input:before {
+  content: "\2077";
+}
+.i-fcs-2078-FCS-Input:before {
+  content: "\2078";
+}
+.i-fcs-2079-FCS-Input:before {
+  content: "\2079";
+}
+.i-fcs-2080-FCS-Input:before {
+  content: "\2080";
+}
+.i-fcs-2081-FCS-Input:before {
+  content: "\2081";
+}
+.i-fcs-2082-FCS-Input:before {
+  content: "\2082";
+}
+.i-fcs-2083-FCS-Input:before {
+  content: "\2083";
+}
+.i-fcs-2099-FCS-Input:before {
+  content: "\2099";
+}
+.i-fcs-2113-FCS-Input:before {
+  content: "\2113";
+}
+.i-fcs-2192-FCS-Input:before {
+  content: "\2192";
+}
+.i-fcs-2211-FCS-Input:before {
+  content: "\2211";
+}
+.i-fcs-2212-FCS-Input:before {
+  content: "\2212";
+}
+.i-fcs-2220-FCS-Input:before {
+  content: "\2220";
+}
+.i-fcs-2260-FCS-Input:before {
+  content: "\2260";
+}
+.i-fcs-2264-FCS-Input:before {
+  content: "\2264";
+}
+.i-fcs-2265-FCS-Input:before {
+  content: "\2265";
+}
+.i-fcs-A730-FCS-Input:before {
+  content: "\a730";
+}
+.i-fcs-B0-FCS-Input:before {
+  content: "\b0";
+}
+.i-fcs-B2-FCS-Input:before {
+  content: "\b2";
+}
+.i-fcs-B3-FCS-Input:before {
+  content: "\b3";
+}
+.i-fcs-B9-FCS-Input:before {
+  content: "\b9";
+}
+.i-fcs-D7-FCS-Input:before {
+  content: "\d7";
+}
+.i-fcs-F7-FCS-Input:before {
+  content: "\f7";
+}
+.i-fcs-FF3F-FCS-Input:before {
+  content: "\ff3f";
+}

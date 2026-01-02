@@ -1,0 +1,53 @@
+html, body { height: 100%; overflow: hidden; }
+        body { font-family: 'Be Vietnam Pro', sans-serif; background-color: #f0f2f5; }
+        
+        /* Map Interactivity */
+        #map-container { cursor: grab; touch-action: none; }
+        #map-container:active { cursor: grabbing; }
+        #map-container svg path {
+            stroke: #a855f7; stroke-width: 0.5;
+            fill: rgba(233, 213, 255, 0.4);
+            transition: fill 0.2s ease-in-out;
+        }
+        #map-container svg path:hover { fill: rgba(168, 85, 247, 0.6); }
+        #map-container svg path.active {
+            fill: rgba(126, 34, 206, 0.7);
+            stroke: #581c87; stroke-width: 1.5;
+        }
+        
+        /* Tooltip */
+        #tooltip {
+            position: absolute; display: none; 
+            background: rgba(17, 24, 39, 0.9); color: white;
+            padding: 6px 10px; border-radius: 6px; 
+            font-size: 13px; font-weight: 500;
+            pointer-events: none; z-index: 50;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Search Results Scrollbar */
+        #search-results { max-height: 200px; overflow-y: auto; }
+        #search-results::-webkit-scrollbar { width: 4px; }
+        #search-results::-webkit-scrollbar-thumb { background-color: #a855f7; border-radius: 20px; }
+
+        /* Details Accordion */
+        details > summary { list-style: none; cursor: pointer; position: relative; padding-right: 20px; }
+        details > summary::-webkit-details-marker { display: none; }
+        details > summary::after { 
+            content: '+'; position: absolute; right: 0; top: 0;
+            font-size: 1.2rem; font-weight: bold; color: #7e22ce;
+        }
+        details[open] > summary::after { content: '−'; }
+        details[open] .prose { animation: fadeIn 0.3s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* TTS Button Styles */
+        .speak-btn {
+            display: flex; align-items: center; justify-content: center;
+            background: #f3e8ff; border: 1px solid #d8b4fe;
+            cursor: pointer; padding: 8px; border-radius: 50%;
+            transition: all 0.2s;
+        }
+        .speak-btn:hover { background-color: #d8b4fe; }
+        .speak-btn:disabled { opacity: 0.6; cursor: wait; }
+        .speak-btn svg { width: 20px; height: 20px; color: #7e22ce; }

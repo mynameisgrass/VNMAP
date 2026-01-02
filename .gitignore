@@ -1,0 +1,21 @@
+# Zip files
+*.zip
+*.tar.gz
+*.rar
+
+# Temporary files
+temp.out
+tmp_admin/
+*.log
+
+# System files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE files
+.vscode/
+.idea/
+
+# Node modules (if any future use)
+node_modules/

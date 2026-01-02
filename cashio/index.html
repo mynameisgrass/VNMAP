@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="">
+<meta charset="UTF-8">
+<title>Calculator Hacking Utils</title>
+<script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register('/sw.js', { scope: '/' }).then(function (registration) {
+      registration.update();
+      if (registration.installing) {
+        console.log('ServiceWorker installing');
+      } else if (registration.waiting) {
+        console.log('ServiceWorker installed');
+        registration.waiting.postMessage({ action: 'skipWaiting' });
+      } else if (registration.active) {
+        console.log('ServiceWorker active');
+      }
+    }).catch(function (err) {
+      console.log('ServiceWorker registration failed: ', err);
+    });
+  }
+</script>
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<meta name="color-scheme" content="light dark">
+<style>
+    html, body {
+        height: 100%;
+        margin: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: #f4f6f8;
+        color: #333;
+        display: flex;
+        flex-direction: column;
+    }
+
+    h1 {
+        text-align: center;
+        margin-top: 40px;
+        font-size: 2.5rem;
+        color: #2c3e50;
+    }
+
+    ul {
+        list-style-type: none;
+        padding: 0 14px;
+        max-width: 800px;
+        margin: 20px auto;
+        flex: 1;
+    }
+
+    li {
+        background: #ffffff;
+        margin: 16px 0;
+        padding: 16px 20px;
+        border-radius: 12px;
+        font-size: 1.1rem;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+        transition: transform 0.2s, box-shadow 0.2s;
+        text-align: center;
+    }
+
+    li:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    li a {
+        display: block;
+        width: 100%;
+    }
+
+    a, a:visited {
+        color: #007acc;
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    footer {
+        text-align: center;
+        padding: 20px;
+        font-size: 0.95rem;
+        background: #eaeaea;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        html, body {
+            background: #1e1e1e;
+            color: #ddd;
+        }
+
+        h1 {
+            color: #f0f0f0;
+        }
+
+        li {
+            background: #2b2b2b;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        li:hover {
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.6);
+        }
+
+        a, a:visited {
+            color: #66bfff;
+        }
+
+        footer {
+            background: #2b2b2b;
+            color: #aaa;
+        }
+    }
+</style>
+<h1>Calculator Hacking Utils</h1>
+<ul>
+    <li><a href="./2-level-font/">Display Font Table (Specified Series) <br> 二级字符表（指定系列）</a></li>
+    <li><a href="./1-level-font/">Calculation Token & Display Font (Specified Model) <br> 一级二级字符表（指定机型）</a>
+    </li>
+    <li><a href="./cn_dict/">fx-CN X/CN CW 词典</a></li>
+    <li><a id="cwqr" href="https://q.20142022.xyz">ClassWiz QR Code Parser <br> ClassWiz 二维码解析器</a></li>
+    <li><a href="./key-font">Key Font Table <br> 按键字体一览</a></li>
+    <li><a id="kfh" href="https://kfh.20142022.xyz">Key Font Helper <br> 按键字体助手</a></li>
+</ul>
+<footer>
+    <a id="discordFooter" style="display: none;" href="https://discord.gg/6YAmDgknw8" target="_blank">sheep.happy</a>
+    <a id="baiduFooter" style="display: none;" href="https://tieba.baidu.com/p/8979831606" target="_blank">CADUO</a>
+    &copy; All Rights Reserved
+</footer>
+<script>
+  fetch('https://discord.com/', {
+    method: 'POST',
+    mode: 'no-cors',
+  }).then(() => {
+    discordFooter.style.display = ''
+    baiduFooter.style.display = 'none'
+  }).catch(() => {
+    discordFooter.style.display = 'none'
+    baiduFooter.style.display = ''
+  });
+  window.onload = () => {
+    setTimeout(() => {
+      // const cn = '本网站免费使用，若付费了请立即索要退款！';
+      const en = 'This website is free to use, if you have paid please ask for a refund immediately!';
+      const vi = 'Trang web này được sử dụng miễn phí. Nếu bạn đã thanh toán, vui lòng yêu cầu hoàn lại tiền ngay lập tức!';
+      navigator.language?.toLowerCase()?.includes('vi') ? alert(`${vi}\n${en}`) : undefined /*alert(`${cn}\n${en}`)*/;
+    }, 300);
+    setTimeout(() => {
+      if (discordFooter.style.display === 'none' && baiduFooter.style.display === 'none') {
+        discordFooter.style.display = 'none'
+        baiduFooter.style.display = ''
+      }
+    }, 2000);
+    if (location.href.includes('ca510.com')) {
+      cwqr.href = 'https://cwqr.ca510.com/';
+      kfh.href = 'https://kfh.ca510.com/';
+    }
+  }
+</script>
+</html>

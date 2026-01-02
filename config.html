@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cấu hình thông tin Tỉnh/Thành phố (Mới)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Be Vietnam Pro', sans-serif; }
+        textarea { height: 150px; resize: vertical; }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <div class="container mx-auto p-6 md:p-8">
+        <h1 class="text-3xl font-bold mb-6 text-purple-800 border-b pb-4">Cấu Hình Dữ Liệu Tỉnh (Bảng Gộp)</h1>
+
+        <div class="mb-8 p-6 bg-white rounded-lg shadow">
+            <label for="province-select" class="block text-lg font-medium mb-2">1. Chọn Tỉnh/Thành phố:</label>
+            <select id="province-select" class="w-full md:w-1/2 p-3 border border-gray-300 rounded-lg text-lg focus:ring-2 focus:ring-purple-500 transition-all">
+                <option value="">-- Vui lòng chọn --</option>
+            </select>
+        </div>
+
+        <form id="config-form" class="hidden">
+            <div class="p-6 bg-white rounded-lg shadow">
+                <h2 id="form-title" class="text-2xl font-bold text-gray-700 mb-6">2. Cập nhật thông tin</h2>
+                <input type="hidden" id="province_id" name="id">
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    
+                    <!-- CỘT BÊN TRÁI -->
+                    <div class="space-y-6">
+                        <div>
+                            <label for="Vi_tri_dia_ly" class="block font-medium mb-1 text-purple-700">Vị trí địa lý</label>
+                            <textarea id="Vi_tri_dia_ly" class="w-full p-2 border rounded-md focus:ring-purple-500 focus:border-purple-500 placeholder-gray-400"></textarea>
+                        </div>
+                        <div>
+                            <label for="Dieu_kien_tu_nhien" class="block font-medium mb-1 text-purple-700">Điều kiện tự nhiên (Địa hình, Khí hậu, Khoáng sản)</label>
+                            <textarea id="Dieu_kien_tu_nhien" class="w-full p-2 border rounded-md focus:ring-purple-500 focus:border-purple-500 bg-gray-50"></textarea>
+                        </div>
+                        <div>
+                            <label for="Dan_cu_va_xa_hoi" class="block font-medium mb-1 text-purple-700">Dân cư & Xã hội</label>
+                            <textarea id="Dan_cu_va_xa_hoi" class="w-full p-2 border rounded-md focus:ring-purple-500 focus:border-purple-500"></textarea>
+                        </div>
+                        <div>
+                            <label for="Kinh_te" class="block font-medium mb-1 text-purple-700">Kinh tế & Tài chính</label>
+                            <textarea id="Kinh_te" class="w-full p-2 border rounded-md focus:ring-purple-500 focus:border-purple-500 bg-gray-50"></textarea>
+                        </div>
+                        <div>
+                            <label for="nguon" class="block font-medium mb-1 text-gray-600">Nguồn tham khảo (Link)</label>
+                            <textarea id="nguon" class="w-full p-2 border rounded-md focus:ring-purple-500 focus:border-purple-500 h-20"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- CỘT BÊN PHẢI -->
+                    <div class="space-y-6">
+                         <div>
+                            <label for="Lich_su_hinh_thanh" class="block font-medium mb-1 text-purple-700">Lịch sử hình thành</label>
+                            <textarea id="Lich_su_hinh_thanh" class="w-full p-2 border rounded-md focus:ring-purple-500 focus:border-purple-500"></textarea>
+                        </div>
+                         <div>
+                            <label for="Van_hoa_du_lich" class="block font-medium mb-1 text-purple-700">Văn hoá & Du lịch</label>
+                            <textarea id="Van_hoa_du_lich" class="w-full p-2 border rounded-md focus:ring-purple-500 focus:border-purple-500 bg-gray-50"></textarea>
+                        </div>
+                        <div>
+                            <label for="Thong_tin_truoc_sat_nhap" class="block font-medium mb-1 text-purple-700">Thông tin TRƯỚC sáp nhập</label>
+                            <textarea id="Thong_tin_truoc_sat_nhap" class="w-full p-2 border rounded-md focus:ring-purple-500 focus:border-purple-500"></textarea>
+                        </div>
+                        <div>
+                            <label for="Thong_tin_sau_sat_nhap" class="block font-medium mb-1 text-purple-700">Thông tin SAU sáp nhập</label>
+                            <textarea id="Thong_tin_sau_sat_nhap" class="w-full p-2 border rounded-md focus:ring-purple-500 focus:border-purple-500"></textarea>
+                        </div>
+                        <div>
+                            <label for="Thong_tin_chi_tiet_xa_phuong" class="block font-medium mb-1 text-purple-700">Chi tiết Xã/Phường</label>
+                            <textarea id="Thong_tin_chi_tiet_xa_phuong" class="w-full p-2 border rounded-md focus:ring-purple-500 focus:border-purple-500"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="mt-8 w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-4 rounded-lg text-lg transition-colors transform hover:scale-105">
+                    Lưu Dữ Liệu Đã Gộp
+                </button>
+                <div id="status-message" class="text-center mt-4 h-6 font-medium"></div>
+            </div>
+        </form>
+    </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const provinceSelect = document.getElementById('province-select');
+    const configForm = document.getElementById('config-form');
+    const formTitle = document.getElementById('form-title');
+    const statusMessage = document.getElementById('status-message');
+
+    // IMPORTANT: Ensure your api.php is updated to SELECT from 'Merged_Province_Data'
+    const API_URL = 'https://vnmap-safeschool.net/api.php';
+    const UPDATE_HANDLER_URL = 'https://vnmap-safeschool.net/update_handler.php';
+
+    // Load list
+    async function loadProvinces() {
+        try {
+            const response = await fetch(`${API_URL}?action=get_all_provinces`);
+            const data = await response.json();
+            // Assuming the API returns { "Province List": [ { "id": 1, "Tong_quan_tinh_thanh_pho": "Hà Nội..." } ] }
+            data['Province List'].forEach(province => {
+                const option = document.createElement('option');
+                // Using ID from the new table
+                option.value = province['id'] || province['Mã Tỉnh']; 
+                // Display Name (extracted from the new Merged Name column or provided separately)
+                option.textContent = province['Tong_quan_tinh_thanh_pho'] || province['Tên Tỉnh'];
+                provinceSelect.appendChild(option);
+            });
+        } catch (error) { console.error('Error loading list:', error); }
+    }
+
+    // Load Details
+    provinceSelect.addEventListener('change', async () => {
+        const selectedId = provinceSelect.value;
+        statusMessage.textContent = '';
+        if (!selectedId) { configForm.classList.add('hidden'); return; }
+
+        try {
+            // You need to update api.php to select * from Merged_Province_Data where id = ...
+            const response = await fetch(`${API_URL}?action=get_province_details&id=${selectedId}`);
+            const details = await response.json();
+
+            // Set Title
+            formTitle.textContent = `2. Cập nhật: ${details.Tong_quan_tinh_thanh_pho}`;
+            document.getElementById('province_id').value = selectedId;
+
+            // Map Fields (Using new column names from DB)
+            document.getElementById('Vi_tri_dia_ly').value = details.Vi_tri_dia_ly || '';
+            document.getElementById('Dieu_kien_tu_nhien').value = details.Dieu_kien_tu_nhien || '';
+            document.getElementById('Dan_cu_va_xa_hoi').value = details.Dan_cu_va_xa_hoi || '';
+            document.getElementById('Kinh_te').value = details.Kinh_te || '';
+            document.getElementById('Lich_su_hinh_thanh').value = details.Lich_su_hinh_thanh || '';
+            document.getElementById('Van_hoa_du_lich').value = details.Van_hoa_du_lich || '';
+            document.getElementById('Thong_tin_truoc_sat_nhap').value = details.Thong_tin_truoc_sat_nhap || '';
+            document.getElementById('Thong_tin_sau_sat_nhap').value = details.Thong_tin_sau_sat_nhap || '';
+            document.getElementById('Thong_tin_chi_tiet_xa_phuong').value = details.Thong_tin_chi_tiet_xa_phuong || '';
+            document.getElementById('nguon').value = details.nguon || '';
+            
+            configForm.classList.remove('hidden');
+        } catch (error) { 
+            console.error('Error loading details:', error); 
+            statusMessage.textContent = "Lỗi tải dữ liệu (Kiểm tra lại api.php đã cập nhật bảng mới chưa?)";
+            statusMessage.className = 'text-red-600';
+        }
+    });
+
+    // Save Data
+    configForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        statusMessage.textContent = 'Đang xử lý...';
+        statusMessage.className = 'text-blue-600';
+
+        // Construct JSON object matching new DB structure
+        const dataToSave = {
+            id: document.getElementById('province_id').value,
+            Vi_tri_dia_ly: document.getElementById('Vi_tri_dia_ly').value,
+            Dieu_kien_tu_nhien: document.getElementById('Dieu_kien_tu_nhien').value,
+            Dan_cu_va_xa_hoi: document.getElementById('Dan_cu_va_xa_hoi').value,
+            Kinh_te: document.getElementById('Kinh_te').value,
+            Lich_su_hinh_thanh: document.getElementById('Lich_su_hinh_thanh').value,
+            Van_hoa_du_lich: document.getElementById('Van_hoa_du_lich').value,
+            Thong_tin_truoc_sat_nhap: document.getElementById('Thong_tin_truoc_sat_nhap').value,
+            Thong_tin_sau_sat_nhap: document.getElementById('Thong_tin_sau_sat_nhap').value,
+            Thong_tin_chi_tiet_xa_phuong: document.getElementById('Thong_tin_chi_tiet_xa_phuong').value,
+            nguon: document.getElementById('nguon').value,
+        };
+
+        try {
+            const response = await fetch(UPDATE_HANDLER_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(dataToSave)
+            });
+            const result = await response.json();
+            if (response.ok && result.status === 'success') {
+                statusMessage.textContent = result.message;
+                statusMessage.className = 'text-green-600 font-bold';
+            } else { throw new Error(result.message || 'Lỗi máy chủ'); }
+        } catch (error) {
+            console.error('Save Error:', error);
+            statusMessage.textContent = `Lỗi: ${error.message}`;
+            statusMessage.className = 'text-red-600 font-bold';
+        }
+    });
+
+    loadProvinces();
+});
+</script>
+</body>
+</html>
